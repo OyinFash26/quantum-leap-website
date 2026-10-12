@@ -1,0 +1,10 @@
+# Claude preview copy of the home page (not part of the website)
+_preview-home.html
+site/_preview-home.html
+
+# Python and OS clutter
+__pycache__/
+*.pyc
+Thumbs.db
+desktop.ini
+.DS_Store
