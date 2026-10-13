@@ -454,7 +454,7 @@ def careers_page(show_drafts=False):
     <p>We read every application. If your experience matches the role, we'll contact you by phone or email.</p>
   </div>
   <div class="steps">
-    <div class="step"><h3>Send your application</h3><p>Click "Apply for this role" and include your CV with your name, phone number and where you live in Lagos.</p></div>
+    <div class="step"><h3>Send your application</h3><p>Click "Apply for this role" and send your CV along with your name and phone number.</p></div>
     <div class="step"><h3>We review it</h3><p>Our team checks your experience against what the role needs.</p></div>
     <div class="step"><h3>Interview</h3><p>Shortlisted applicants are invited to an interview at our office in Ikota or by phone.</p></div>
     <div class="step"><h3>Offer</h3><p>Successful applicants receive an offer and start with an introduction to our sites and team.</p></div>
