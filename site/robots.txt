@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://quantum-leap-website.vercel.app/sitemap.xml

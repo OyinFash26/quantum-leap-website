@@ -104,7 +104,7 @@ FOOTER = f'''<footer class="site">
       <div class="social"><a href="{IG}" target="_blank" rel="noopener" aria-label="Instagram">{icon("ig", 18)}</a><a href="{FB}" target="_blank" rel="noopener" aria-label="Facebook">{icon("fb", 18)}</a></div>
     </div>
     <div><h3>Company</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About us</a></li><li><a href="services.html">Services</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-    <div><h3>Services</h3><ul><li><a href="services.html#facility">Facility management</a></li><li><a href="services.html#janitorial">Janitorial services</a></li><li><a href="services.html#post-construction">Post-construction cleaning</a></li><li><a href="services.html#real-estate">Real estate services</a></li><li><a href="services.html#audit">Free facility audit</a></li></ul></div>
+    <div><h3>Services</h3><ul><li><a href="facility-management.html">Facility management</a></li><li><a href="janitorial-services.html">Janitorial services</a></li><li><a href="post-construction-cleaning.html">Post-construction cleaning</a></li><li><a href="real-estate-services.html">Real estate services</a></li><li><a href="services.html#audit">Free facility audit</a></li></ul></div>
     <div><h3>Get in touch</h3><ul><li>{ADDRESS}</li><li>Phone and WhatsApp: {PHONE}</li><li>{EMAIL}</li></ul></div>
   </div>
   <div class="bottom"><div class="wrap"><span>© <span id="year">2026</span> Quantum Leap Management Services Ltd. All rights reserved.</span><span>Ajah, Lagos, Nigeria</span></div></div>
@@ -163,10 +163,10 @@ HOME = f'''<main>
     <p>From routine maintenance to a deep clean after construction, one team takes care of it all. Choose a single service or combine them.</p>
   </div>
   <div class="svc-grid">
-    <a class="svc-card" href="services.html#facility"><img src="img/facility.jpg" alt="Residential high-rise in Lagos" loading="lazy"><div class="body"><h3>Facility management</h3><p>Keeping buildings running efficiently, safely and cost-effectively over the long run.</p><span class="more arrow">Learn more </span></div></a>
-    <a class="svc-card" href="services.html#janitorial"><img src="img/janitorial.jpg" alt="Cleaning crew mopping, wiping and washing windows in a modern kitchen" loading="lazy"><div class="body"><h3>Janitorial services</h3><p>Clean, hygienic and presentable spaces for daily use, with light and deep cleaning plans.</p><span class="more arrow">Learn more </span></div></a>
-    <a class="svc-card" href="services.html#post-construction"><img src="img/post-construction.jpg" alt="Cleaner in overalls washing the windows of a newly finished home" loading="lazy"><div class="body"><h3>Post-construction cleaning</h3><p>Preparing newly built or renovated properties for handover, occupation or sale.</p><span class="more arrow">Learn more </span></div></a>
-    <a class="svc-card" href="services.html#real-estate"><img src="img/real-estate.jpg" alt="Real estate agent holding house keys and a SOLD sign" loading="lazy"><div class="body"><h3>Real estate services</h3><p>Property sourcing, leasing and basic property management for owners and clients.</p><span class="more arrow">Learn more </span></div></a>
+    <a class="svc-card" href="facility-management.html"><img src="img/facility.jpg" alt="Residential high-rise in Lagos" loading="lazy"><div class="body"><h3>Facility management</h3><p>Keeping buildings running efficiently, safely and cost-effectively over the long run.</p><span class="more arrow">Learn more </span></div></a>
+    <a class="svc-card" href="janitorial-services.html"><img src="img/janitorial.jpg" alt="Cleaning crew mopping, wiping and washing windows in a modern kitchen" loading="lazy"><div class="body"><h3>Janitorial services</h3><p>Clean, hygienic and presentable spaces for daily use, with light and deep cleaning plans.</p><span class="more arrow">Learn more </span></div></a>
+    <a class="svc-card" href="post-construction-cleaning.html"><img src="img/post-construction.jpg" alt="Cleaner in overalls washing the windows of a newly finished home" loading="lazy"><div class="body"><h3>Post-construction cleaning</h3><p>Preparing newly built or renovated properties for handover, occupation or sale.</p><span class="more arrow">Learn more </span></div></a>
+    <a class="svc-card" href="real-estate-services.html"><img src="img/real-estate.jpg" alt="Real estate agent holding house keys and a SOLD sign" loading="lazy"><div class="body"><h3>Real estate services</h3><p>Property sourcing, leasing and basic property management for owners and clients.</p><span class="more arrow">Learn more </span></div></a>
   </div>
 </div></section>
 
@@ -325,7 +325,7 @@ SERVICES = f'''<main>
       <h2>Facility management</h2>
       <p>We make sure buildings and facilities run efficiently, safely and cost-effectively over the long run. Our facility management covers everything involved in keeping a property well maintained, on terms agreed with the property owner.</p>
       <ul class="ticks"><li>Day-to-day facility operations coordination</li><li>Preventive and corrective maintenance oversight</li><li>Asset management and maintenance scheduling</li><li>Vendor and artisan coordination (cleaners, security, electrical, plumbing, HVAC and more)</li><li>Routine facility inspections and reporting</li><li>Energy management</li><li>Security and access control</li><li>A clean and well-kept environment</li><li>Client reporting and performance tracking</li></ul>
-      <a class="btn btn-primary" href="contact.html#facility">Request facility management</a>
+      <div class="ctas" style="margin-top:4px"><a class="btn btn-primary" href="contact.html#facility">Request facility management</a><a class="btn btn-ghost arrow" href="facility-management.html">Full details </a></div>
     </div>
   </article>
   <article class="svc-detail" id="janitorial">
@@ -335,7 +335,7 @@ SERVICES = f'''<main>
       <h2>Janitorial services</h2>
       <p>We keep spaces clean, hygienic and presentable for daily use. We offer both light and deep cleaning plans, depending on what your property needs.</p>
       <ul class="ticks"><li>Daily, weekly and periodic cleaning</li><li>Office cleaning</li><li>Residential and estate cleaning</li><li>Restroom and common-area sanitation</li><li>Waste management and disposal coordination</li><li>Cleaning staff supervision and quality checks</li></ul>
-      <a class="btn btn-primary" href="contact.html#janitorial">Request janitorial services</a>
+      <div class="ctas" style="margin-top:4px"><a class="btn btn-primary" href="contact.html#janitorial">Request janitorial services</a><a class="btn btn-ghost arrow" href="janitorial-services.html">Full details </a></div>
     </div>
   </article>
   <article class="svc-detail" id="post-construction">
@@ -345,7 +345,7 @@ SERVICES = f'''<main>
       <h2>Post-construction cleaning</h2>
       <p>We prepare newly built or renovated properties for handover, occupation or sale, clearing the dust and debris that construction leaves behind.</p>
       <ul class="ticks"><li>Removal of construction debris and dust</li><li>Deep cleaning of floors, walls, fittings and surfaces</li><li>Window, glass and façade cleaning</li><li>Final detailing and finishing cleans</li><li>Handover-ready cleaning for inspections and client use</li></ul>
-      <a class="btn btn-primary" href="contact.html#post-construction">Request post-construction cleaning</a>
+      <div class="ctas" style="margin-top:4px"><a class="btn btn-primary" href="contact.html#post-construction">Request post-construction cleaning</a><a class="btn btn-ghost arrow" href="post-construction-cleaning.html">Full details </a></div>
     </div>
   </article>
   <article class="svc-detail" id="real-estate">
@@ -355,7 +355,7 @@ SERVICES = f'''<main>
       <h2>Real estate services</h2>
       <p>We support property owners and clients with property sourcing, leasing and basic property management.</p>
       <ul class="ticks"><li>Property sourcing and listing</li><li>Property inspections and evaluations</li><li>Leasing and tenant coordination</li><li>Support for sales and lettings</li><li>Property handover and documentation support</li></ul>
-      <a class="btn btn-primary" href="contact.html#real-estate">Request real estate services</a>
+      <div class="ctas" style="margin-top:4px"><a class="btn btn-primary" href="contact.html#real-estate">Request real estate services</a><a class="btn btn-ghost arrow" href="real-estate-services.html">Full details </a></div>
     </div>
   </article>
 </div></section>
@@ -553,23 +553,235 @@ def careers_page(show_drafts=False):
 </main>'''
 
 
+# ---------------------------------------------------------------- one page per service
+# "included" lists come from the company profile; the rest is written for the website.
+
+SERVICE_PAGES = [
+    {
+        "file": "facility-management.html", "anchor": "facility", "contact": "facility",
+        "name": "Facility management", "img": "facility.jpg", "alt": "Residential high-rise in Lagos",
+        "title": "Facility Management in Lagos | Quantum Leap Management Services",
+        "desc": "Facility management for estates, offices and commercial buildings in Lagos: maintenance, vendor coordination, inspections, security and reporting. Book a free facility audit.",
+        "headline": "Facility management that keeps your property running",
+        "lede": "We make sure buildings and facilities run efficiently, safely and cost-effectively over the long run.",
+        "intro": [
+            "Our facility management covers everything involved in keeping a property well maintained, on terms agreed with the property owner.",
+            "Instead of juggling separate cleaners, security, electricians, plumbers and HVAC technicians, you deal with one team. We plan the maintenance, coordinate the vendors, inspect the work and report back to you regularly.",
+        ],
+        "included": [
+            "Day-to-day facility operations coordination",
+            "Preventive and corrective maintenance oversight",
+            "Asset management and maintenance scheduling",
+            "Vendor and artisan coordination (cleaners, security, electrical, plumbing, HVAC and more)",
+            "Routine facility inspections and reporting",
+            "Energy management",
+            "Security and access control",
+            "A clean and well-kept environment",
+            "Client reporting and performance tracking",
+        ],
+        "for": ["Residential estates", "Commercial buildings", "Corporate offices", "Plazas and shopping centres",
+                "Educational institutions", "Healthcare facilities", "Mixed-use developments"],
+        "faq": [
+            ("What does a facility manager actually do?",
+             "We run the day-to-day upkeep of your property for you: scheduling maintenance, coordinating artisans and vendors, inspecting the property and reporting to you, so problems are caught early and handled properly."),
+            ("Can you take over from our current vendors?",
+             "Yes. We can coordinate the cleaners, security, electricians, plumbers and other vendors you already use, or bring in our own, so you have one point of contact."),
+            ("How will I know what's happening at my property?",
+             "We carry out routine inspections and send you regular reports on the work done and any issues that need your decision."),
+            ("How do we get started?",
+             "Book a free facility audit. We inspect your property, give you a report of what we find, and then propose a service plan for your property."),
+        ],
+    },
+    {
+        "file": "janitorial-services.html", "anchor": "janitorial", "contact": "janitorial",
+        "name": "Janitorial services", "img": "janitorial.jpg", "alt": "Cleaning crew mopping, wiping and washing windows in a modern kitchen",
+        "title": "Janitorial and Cleaning Services in Lagos | Quantum Leap Management Services",
+        "desc": "Office, residential and estate cleaning in Lagos. Daily, weekly and periodic cleaning, restroom and common-area sanitation, and supervised cleaning staff.",
+        "headline": "Clean, hygienic spaces, every day",
+        "lede": "We keep offices, homes and estates clean, hygienic and presentable for daily use.",
+        "intro": [
+            "We offer both light and deep cleaning plans, depending on what your property needs, on a daily, weekly or periodic schedule.",
+            "Our cleaning staff are supervised, and their work is checked regularly, so the standard stays high long after the first visit.",
+        ],
+        "included": [
+            "Daily, weekly and periodic cleaning",
+            "Office cleaning",
+            "Residential and estate cleaning",
+            "Restroom and common-area sanitation",
+            "Waste management and disposal coordination",
+            "Cleaning staff supervision and quality checks",
+        ],
+        "for": ["Offices", "Residential estates", "Apartment blocks and common areas", "Plazas and shopping centres",
+                "Schools", "Healthcare facilities", "Private homes"],
+        "faq": [
+            ("Do you offer both light and deep cleaning?",
+             "Yes. We have light cleaning plans for routine upkeep and deep cleaning plans for a thorough clean, depending on your property's needs."),
+            ("How often can you clean?",
+             "We clean daily, weekly or periodically. We'll recommend a schedule based on how your space is used."),
+            ("Who supervises the cleaners?",
+             "Our team supervises the cleaning staff and carries out regular quality checks."),
+            ("Can you handle waste disposal too?",
+             "Yes. We coordinate waste management and disposal as part of the service."),
+        ],
+    },
+    {
+        "file": "post-construction-cleaning.html", "anchor": "post-construction", "contact": "post-construction",
+        "name": "Post-construction cleaning", "img": "post-construction.jpg", "alt": "Cleaner in overalls washing the windows of a newly finished home",
+        "title": "Post-Construction Cleaning in Lagos | Quantum Leap Management Services",
+        "desc": "Post-construction and after-renovation cleaning in Lagos. Debris and dust removal, deep cleaning, window and facade cleaning, and handover-ready finishing.",
+        "headline": "Handover-ready after building or renovation",
+        "lede": "We prepare newly built or renovated properties for handover, occupation or sale.",
+        "intro": [
+            "Building work leaves dust, debris, paint and cement on every surface. We clear it all and finish the property to a standard that's ready for inspection, for new occupants or for buyers.",
+            "We work with developers, contractors, landlords and homeowners, from single homes to full developments.",
+        ],
+        "included": [
+            "Removal of construction debris and dust",
+            "Deep cleaning of floors, walls, fittings and surfaces",
+            "Window, glass and façade cleaning",
+            "Final detailing and finishing cleans",
+            "Handover-ready cleaning for inspections and client use",
+        ],
+        "for": ["Property developers", "Building contractors", "Homeowners after renovation",
+                "Landlords preparing for new tenants", "Properties being prepared for sale"],
+        "faq": [
+            ("When should I book a post-construction clean?",
+             "Once the building or renovation work is finished and before the handover, inspection or move-in date. Booking early helps us plan around your deadline."),
+            ("What does a post-construction clean include?",
+             "Removing construction debris and dust, deep cleaning floors, walls, fittings and surfaces, cleaning windows, glass and the façade, and a final detailing clean."),
+            ("Do you clean for inspections and handovers?",
+             "Yes. We finish properties to a handover-ready standard for inspections and client use."),
+            ("I've just bought a newly built home. Can you help?",
+             "Yes. A post-construction clean before you move in removes the dust and debris builders leave behind."),
+        ],
+    },
+    {
+        "file": "real-estate-services.html", "anchor": "real-estate", "contact": "real-estate",
+        "name": "Real estate services", "img": "real-estate.jpg", "alt": "Real estate agent holding house keys and a SOLD sign",
+        "title": "Real Estate Services in Lagos | Quantum Leap Management Services",
+        "desc": "Property sourcing and listing, inspections, leasing and tenant coordination, sales and lettings support, and handover documentation in Lagos.",
+        "headline": "Support for buying, letting and managing property",
+        "lede": "We support property owners and clients with property sourcing, leasing and basic property management.",
+        "intro": [
+            "Whether you're looking for a property, letting one out or handing one over, we help with the practical work: finding and listing properties, inspecting them, coordinating tenants and handling the paperwork at handover.",
+            "Because we also manage and maintain properties, we know what to look for beyond the finishes.",
+        ],
+        "included": [
+            "Property sourcing and listing",
+            "Property inspections and evaluations",
+            "Leasing and tenant coordination",
+            "Support for sales and lettings",
+            "Property handover and documentation support",
+        ],
+        "for": ["Property owners and landlords", "Buyers looking for a property", "Tenants looking to rent",
+                "Developers selling or letting units", "Estate associations"],
+        "faq": [
+            ("Can you help me find a property?",
+             "Yes. We source properties that match what you're looking for and arrange inspections."),
+            ("Can you inspect a property before I buy or rent it?",
+             "Yes. We carry out property inspections and evaluations so you know its condition before you commit."),
+            ("Do you manage tenants for landlords?",
+             "We handle leasing and tenant coordination, and can combine this with our facility management for the property itself."),
+            ("Do you help with handover paperwork?",
+             "Yes. We support property handovers and the documentation that goes with them."),
+        ],
+    },
+]
+
+
+def service_page(s):
+    intro = "".join(f"<p>{p}</p>" for p in s["intro"])
+    inc = "".join(f"<li>{i}</li>" for i in s["included"])
+    who = "".join(f"<span>{w}</span>" for w in s["for"])
+    faq = "".join(f'<details class="faq-item"><summary>{q}</summary><p>{a}</p></details>' for q, a in s["faq"])
+    others = "".join(
+        f'<a class="svc-card" href="{o["file"]}"><img src="img/{o["img"]}" alt="{o["alt"]}" loading="lazy">'
+        f'<div class="body"><h3>{o["name"]}</h3><p>{o["lede"]}</p><span class="more arrow">Learn more </span></div></a>'
+        for o in SERVICE_PAGES if o is not s)
+    return f'''<main>
+<section class="page-hero"><div class="wrap">
+  <p class="crumbs"><a href="index.html">Home</a> / <a href="services.html">Services</a> / {s["name"]}</p>
+  <p class="eyebrow">{s["name"]}</p>
+  <h1>{s["headline"]}</h1>
+  <p class="lede">{s["lede"]}</p>
+  <div class="ctas"><a class="btn btn-light" href="contact.html#{s["contact"]}">Request this service</a><a class="btn btn-outline-light" href="{WA_LINK}" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
+</div></section>
+
+<section class="block"><div class="wrap split">
+  <div class="copy">
+    <p class="eyebrow">Overview</p>
+    <h2>{s["lede"]}</h2>
+    {intro}
+  </div>
+  <div class="media"><img src="img/{s["img"]}" alt="{s["alt"]}"></div>
+</div></section>
+
+<section class="block alt"><div class="wrap">
+  <div class="sec-head">
+    <div><p class="eyebrow">What's included</p><h2>Our {s["name"].lower()} service covers</h2></div>
+    <p>Choose the full service or the parts you need. We'll agree the scope with you before we start.</p>
+  </div>
+  <ul class="ticks included">{inc}</ul>
+</div></section>
+
+<section class="block"><div class="wrap">
+  <div class="sec-head">
+    <div><p class="eyebrow">Who it's for</p><h2>Properties and clients we serve</h2></div>
+    <p>Whatever the size of your property, we tailor the service plan to it.</p>
+  </div>
+  <div class="chips">{who}</div>
+</div></section>
+
+<section class="block alt"><div class="wrap">
+  <div class="sec-head">
+    <div><p class="eyebrow">How we work</p><h2>Our process</h2></div>
+    <p>From the first inspection to ongoing support, every engagement follows the same six steps.</p>
+  </div>
+  {PROCESS}
+</div></section>
+
+<section class="block"><div class="wrap faq-wrap">
+  <div><p class="eyebrow">Questions</p><h2>Frequently asked questions</h2><p class="muted" style="margin-top:12px">Can't find your answer? Call or WhatsApp us on {PHONE}.</p></div>
+  <div class="faq">{faq}</div>
+</div></section>
+
+<section class="block tight"><div class="wrap">
+  <div class="sec-head"><div><p class="eyebrow">More from Quantum Leap</p><h2>Our other services</h2></div><p>Combine services and work with one partner instead of several vendors.</p></div>
+  <div class="svc-grid three">{others}</div>
+</div></section>
+</main>
+{cta_band()}'''
+
+
 PAGES = {
     "index.html": ("Quantum Leap Management Services", "home", HOME),
     "about.html": ("About Us | Quantum Leap Management Services", "about", ABOUT),
     "services.html": ("Services | Quantum Leap Management Services", "services", SERVICES),
+    **{s["file"]: (s["title"], "services", service_page(s), s["desc"]) for s in SERVICE_PAGES},
     "careers.html": ("Careers | Quantum Leap Management Services", "careers", careers_page(SHOW_DRAFTS)),
     "contact.html": ("Contact | Quantum Leap Management Services", "contact", CONTACT),
 }
 
 DESC = "Quantum Leap Management Services Ltd: facility management, janitorial services, post-construction cleaning and real estate services in Lagos, Nigeria. Since 2012."
 
-for fname, (title, key, body) in PAGES.items():
+for fname, (title, key, body, *rest) in PAGES.items():
+    desc = rest[0] if rest else DESC
     inner = f"{header(key)}\n{body}\n{FOOTER}\n"
     full = (f'<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-            f'<title>{title}</title>\n<meta name="description" content="{DESC}">\n{FONTS}\n</head>\n<body>\n{inner}</body>\n</html>\n')
+            f'<title>{title}</title>\n<meta name="description" content="{html.escape(desc)}">\n{FONTS}\n</head>\n<body>\n{inner}</body>\n</html>\n')
     (OUT / fname).write_text(full, encoding="utf-8")
     if key == "home":
         (Path(__file__).parent / "_preview-home.html").write_text(f"<title>{title}</title>\n{FONTS}\n{inner}", encoding="utf-8")
+
+# Sitemap and robots.txt so search engines find every page (clean URLs, as Vercel serves them)
+SITE_URL = "https://quantum-leap-website.vercel.app"
+urls = "".join(
+    f"  <url><loc>{SITE_URL}/{'' if f == 'index.html' else f[:-5]}</loc><lastmod>{date.today().isoformat()}</lastmod></url>\n"
+    for f in PAGES)
+(OUT / "sitemap.xml").write_text(
+    f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n',
+    encoding="utf-8")
+(OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
 
 print("Built:", ", ".join(PAGES))
