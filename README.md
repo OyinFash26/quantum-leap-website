@@ -14,6 +14,18 @@ Website for Quantum Leap Management Services Ltd, a facility and property manage
 2. Run `python build.py` to regenerate the pages in `site/`.
 3. Commit and push. Vercel redeploys automatically.
 
+## Posting a vacancy
+
+Vacancies live in `jobs.json`.
+
+1. Copy one of the job blocks, fill in the details, and set `"published": true`.
+2. Set `"closing"` to the last day to apply (`YYYY-MM-DD`). The job disappears after that day. Leave it empty for no closing date.
+3. Run `python build.py`, then commit and push.
+
+To preview unpublished jobs locally, run `python build.py --drafts`, but rebuild with plain `python build.py` before pushing.
+
+Applications: set `"apply_form_url"` to an application form link (for example a Tally form with a file-upload field for CVs, and a hidden field called `job`). If it's empty, the Apply button opens an email to the company instead.
+
 ## Hosting
 
 Deployed on Vercel. `vercel.json` tells Vercel to serve the `site/` folder with no build step.
