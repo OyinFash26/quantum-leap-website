@@ -35,6 +35,11 @@ IG = "https://www.instagram.com/quantum.leap.management/"
 FB = "https://www.facebook.com/quantumleapmgtservices/"
 MAP = "https://www.google.com/maps/search/?api=1&query=Double+Crown+Plaza+Ogombo+Road+Ajah+Lagos"
 
+BROCHURE = "downloads/Quantum-Leap-Brochure-2026.pdf"
+_b = Path(__file__).parent / "site" / BROCHURE
+BROCHURE_SIZE = f"PDF, {_b.stat().st_size / 1_048_576:.1f} MB" if _b.exists() else "PDF"
+
+
 # Properties come from projects.json (shown on Home, About and the Projects page)
 def load_projects():
     import json as _json
@@ -66,6 +71,7 @@ def icon(name, size=22):
         "ig": '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/>',
         "fb": '<path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/>',
         "menu": '<path d="M4 7h16M4 12h16M4 17h16"/>',
+        "download": '<path d="M12 3v12M7 10l5 5 5-5M4 19h16"/>',
     }
     return (f'<svg width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
             f'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{paths[name]}</svg>')
@@ -102,7 +108,7 @@ FOOTER = f'''<footer class="site">
       <p>Trusted facility managers since 2012. Supporting your critical infrastructure needs.</p>
       <div class="social"><a href="{IG}" target="_blank" rel="noopener" aria-label="Instagram">{icon("ig", 18)}</a><a href="{FB}" target="_blank" rel="noopener" aria-label="Facebook">{icon("fb", 18)}</a></div>
     </div>
-    <div><h3>Company</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About us</a></li><li><a href="services.html">Services</a></li><li><a href="projects.html">Projects</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h3>Company</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About us</a></li><li><a href="services.html">Services</a></li><li><a href="projects.html">Projects</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li><li><a href="{BROCHURE}" download>Download our brochure ({BROCHURE_SIZE})</a></li></ul></div>
     <div><h3>Services</h3><ul><li><a href="facility-management.html">Facility management</a></li><li><a href="janitorial-services.html">Janitorial services</a></li><li><a href="post-construction-cleaning.html">Post-construction cleaning</a></li><li><a href="real-estate-services.html">Real estate services</a></li><li><a href="services.html#audit">Free facility audit</a></li></ul></div>
     <div><h3>Get in touch</h3><ul><li>{ADDRESS}</li><li>Phone and WhatsApp: {PHONE}</li><li>{EMAIL}</li></ul></div>
   </div>
@@ -288,6 +294,14 @@ ABOUT = f'''<main>
   </div>
 </div></section>
 
+<section class="block tight"><div class="wrap">
+  <div class="brochure-band">
+    <span class="ic">{icon("download", 26)}</span>
+    <div><h2>Download our company brochure</h2><p>Our services, vision and mission, and the properties we've managed, in one document you can save or share.</p></div>
+    <a class="btn btn-primary" href="{BROCHURE}" download>Download brochure <span class="btn-note">{BROCHURE_SIZE}</span></a>
+  </div>
+</div></section>
+
 <section class="block alt" id="experience" style="scroll-margin-top:90px"><div class="wrap split">
   <div class="copy">
     <p class="eyebrow">Our experience</p>
@@ -415,6 +429,7 @@ CONTACT = f'''<main>
     <dl class="c-card"><span class="ic">{icon("mail")}</span><dt>Email</dt><dd><span class="val">{EMAIL}</span><button class="small-btn" type="button" data-copy="{EMAIL}">Copy</button></dd></dl>
     <dl class="c-card"><span class="ic">{icon("pin")}</span><dt>Office</dt><dd><span class="val">{ADDRESS}</span></dd><dd><a class="small-btn" href="{MAP}" target="_blank" rel="noopener">View on Google Maps</a></dd></dl>
     <dl class="c-card"><span class="ic">{icon("ig")}</span><dt>Social media</dt><dd><a class="small-btn" href="{IG}" target="_blank" rel="noopener">Instagram</a><a class="small-btn" href="{FB}" target="_blank" rel="noopener">Facebook</a></dd></dl>
+    <dl class="c-card"><span class="ic">{icon("download")}</span><dt>Company brochure</dt><dd><a class="small-btn" href="{BROCHURE}" download>Download brochure</a></dd><dd class="note">{BROCHURE_SIZE}</dd></dl>
   </div>
 
   <form class="request" id="requestForm" novalidate>

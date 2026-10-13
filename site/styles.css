@@ -374,3 +374,12 @@ footer.site .logo-mark { background: #ffffff; padding: 3px; }
 .proj-body > p:not(.eyebrow):not(.proj-loc) { color: var(--muted); }
 .proj-loc { display: flex; gap: 8px; align-items: flex-start; color: var(--muted); font-size: .95rem; }
 .proj-loc svg { flex: none; margin-top: 2px; color: var(--royal); }
+
+/* Brochure download */
+.brochure-band { display: grid; grid-template-columns: auto 1fr auto; gap: 20px 24px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 26px 28px; }
+.brochure-band .ic { width: 56px; height: 56px; border-radius: 16px; background: var(--tint); color: var(--royal); display: grid; place-items: center; }
+.brochure-band h2 { font-size: clamp(1.3rem, 2.4vw, 1.6rem); }
+.brochure-band p { color: var(--muted); margin-top: 6px; max-width: 60ch; }
+.btn-note { font-weight: 500; opacity: .8; font-size: .82rem; }
+@media (max-width: 760px) { .brochure-band { grid-template-columns: 1fr; } }
+.c-card dd.note { grid-column: 2; font-weight: 400; font-size: .85rem; color: var(--muted); }
