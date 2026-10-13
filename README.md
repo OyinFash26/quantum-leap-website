@@ -54,4 +54,5 @@ Most photos in `site/img/` come from [Pexels](https://www.pexels.com) and are us
 | about-house.jpg | https://www.pexels.com/photo/38040969/ |
 | engineer.jpg | https://www.pexels.com/photo/33915172/ |
 | bricks-court.jpg | Company brochure (QL Brochure 2026), photo of Bricks Court |
+| shore-court.jpg | Company brochure (QL Brochure 2026), photo of Shore Court (cropped) |
 | double-crown-plaza.jpg | Company brochure (QL Brochure 2026), photo of Double Crown Plaza |
