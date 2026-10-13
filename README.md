@@ -14,6 +14,12 @@ Website for Quantum Leap Management Services Ltd, a facility and property manage
 2. Run `python build.py` to regenerate the pages in `site/`.
 3. Commit and push. Vercel redeploys automatically.
 
+## Updating projects
+
+The Projects page (and the property lists on Home and About) come from `projects.json`.
+Add a photo to `site/img/`, put its file name in `"image"`, and fill in `"type"`, `"summary"` and `"services"` as you get the details.
+Run `python build.py`, then commit and push.
+
 ## Posting a vacancy
 
 Vacancies live in `jobs.json`.

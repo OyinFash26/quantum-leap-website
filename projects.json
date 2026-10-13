@@ -1,0 +1,48 @@
+{
+  "_how_to_use": [
+    "Each property is one block in the 'projects' list, shown on the Projects page in this order.",
+    "'image' is a photo file in site/img/ (for example 'bricks-court.jpg'). Leave it empty to show a plain card without a photo.",
+    "'type', 'summary' and 'services' are optional. Fill them in as you get the details; empty ones are simply not shown.",
+    "'services' can include any of: Facility management, Janitorial services, Post-construction cleaning, Real estate services.",
+    "Set 'published' to false to hide a property without deleting it.",
+    "After editing, run: python build.py   then commit and push."
+  ],
+  "projects": [
+    {
+      "published": true,
+      "name": "Bricks Court",
+      "location": "Orchid Road, Eti-Osa, Lagos",
+      "type": "",
+      "image": "",
+      "summary": "",
+      "services": []
+    },
+    {
+      "published": true,
+      "name": "Garwood Court",
+      "location": "Lekki Conservation Centre Road, off Lekki-Epe Expressway, Lagos",
+      "type": "",
+      "image": "",
+      "summary": "",
+      "services": []
+    },
+    {
+      "published": true,
+      "name": "Shore Court",
+      "location": "Lekki Phase 1, Lagos",
+      "type": "",
+      "image": "",
+      "summary": "",
+      "services": []
+    },
+    {
+      "published": true,
+      "name": "Double Crown Plaza",
+      "location": "Ogombo Road, Abraham Adesanya, Eti-Osa, Lagos",
+      "type": "Commercial plaza",
+      "image": "double-crown-plaza.jpg",
+      "summary": "A commercial plaza on Ogombo Road, Ajah, and home to our office.",
+      "services": []
+    }
+  ]
+}

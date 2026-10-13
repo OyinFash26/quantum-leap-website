@@ -35,17 +35,15 @@ IG = "https://www.instagram.com/quantum.leap.management/"
 FB = "https://www.facebook.com/quantumleapmgtservices/"
 MAP = "https://www.google.com/maps/search/?api=1&query=Double+Crown+Plaza+Ogombo+Road+Ajah+Lagos"
 
-# Properties from the company profile ("Our Experience")
-PROPERTIES = [
-    ("Bricks Court", "Orchid Road, Eti-Osa, Lagos"),
-    ("Garwood Court", "Lekki Conservation Centre Road, off Lekki-Epe Expressway, Lagos"),
-    ("Shore Court", "Lekki Phase 1, Lagos"),
-    ("Double Crown Plaza", "Ogombo Road, Abraham Adesanya, Eti-Osa, Lagos"),
-]
+# Properties come from projects.json (shown on Home, About and the Projects page)
+def load_projects():
+    import json as _json
+    data = _json.loads((Path(__file__).parent / "projects.json").read_text(encoding="utf-8"))
+    return [p for p in data.get("projects", []) if p.get("published")]
 
 
 def properties_list():
-    return "".join(f'<li><b>{name}</b><span>{where}</span></li>' for name, where in PROPERTIES)
+    return "".join(f'<li><b>{p["name"]}</b><span>{p["location"]}</span></li>' for p in load_projects())
 
 
 def icon(name, size=22):
@@ -76,7 +74,8 @@ def icon(name, size=22):
 LOGO = '<img class="logo-mark" src="img/logo.png" width="40" height="40" alt="">'
 
 NAV = [("index.html", "Home", "home"), ("about.html", "About us", "about"),
-       ("services.html", "Services", "services"), ("careers.html", "Careers", "careers"),
+       ("services.html", "Services", "services"), ("projects.html", "Projects", "projects"),
+       ("careers.html", "Careers", "careers"),
        ("contact.html", "Contact", "contact")]
 
 
@@ -103,7 +102,7 @@ FOOTER = f'''<footer class="site">
       <p>Trusted facility managers since 2012. Supporting your critical infrastructure needs.</p>
       <div class="social"><a href="{IG}" target="_blank" rel="noopener" aria-label="Instagram">{icon("ig", 18)}</a><a href="{FB}" target="_blank" rel="noopener" aria-label="Facebook">{icon("fb", 18)}</a></div>
     </div>
-    <div><h3>Company</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About us</a></li><li><a href="services.html">Services</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h3>Company</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About us</a></li><li><a href="services.html">Services</a></li><li><a href="projects.html">Projects</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
     <div><h3>Services</h3><ul><li><a href="facility-management.html">Facility management</a></li><li><a href="janitorial-services.html">Janitorial services</a></li><li><a href="post-construction-cleaning.html">Post-construction cleaning</a></li><li><a href="real-estate-services.html">Real estate services</a></li><li><a href="services.html#audit">Free facility audit</a></li></ul></div>
     <div><h3>Get in touch</h3><ul><li>{ADDRESS}</li><li>Phone and WhatsApp: {PHONE}</li><li>{EMAIL}</li></ul></div>
   </div>
@@ -197,7 +196,7 @@ HOME = f'''<main>
     <h2>Properties we've managed</h2>
     <p>We have worked with estates and commercial properties across Lekki, Ajah and Eti-Osa, including:</p>
     <ul class="props">{properties_list()}</ul>
-    <a class="btn btn-primary arrow" href="about.html#experience">About our work </a>
+    <a class="btn btn-primary arrow" href="projects.html">See our projects </a>
   </div>
 </div></section>
 
@@ -295,6 +294,7 @@ ABOUT = f'''<main>
     <h2>Properties we've managed</h2>
     <p>Over the past few years we have worked with these estates and properties:</p>
     <ul class="props">{properties_list()}</ul>
+    <a class="btn btn-primary arrow" href="projects.html">See our projects </a>
   </div>
   <div class="media"><img src="img/double-crown-plaza.jpg" alt="Double Crown Plaza on Ogombo Road, Ajah" loading="lazy"></div>
 </div></section>
@@ -753,11 +753,74 @@ def service_page(s):
 {cta_band()}'''
 
 
+# ---------------------------------------------------------------- projects (from projects.json)
+
+def project_card(p):
+    q = quote(f'{p["name"]}, {p["location"]}')
+    if p.get("image"):
+        media = f'<img src="img/{esc(p["image"])}" alt="{esc(p["name"])}, {esc(p["location"])}" loading="lazy">'
+    else:
+        media = f'<div class="proj-placeholder" aria-hidden="true">{icon("building", 40)}<span>{esc(p["name"])}</span></div>'
+    tags = "".join(f"<span>{esc(s)}</span>" for s in p.get("services", []))
+    return f'''<article class="project">
+  <div class="proj-media">{media}</div>
+  <div class="proj-body">
+    {f'<p class="eyebrow">{esc(p["type"])}</p>' if p.get("type") else ""}
+    <h3>{esc(p["name"])}</h3>
+    <p class="proj-loc">{icon("pin", 18)}<span>{esc(p["location"])}</span></p>
+    {f'<p>{esc(p["summary"])}</p>' if p.get("summary") else ""}
+    {f'<div class="chips">{tags}</div>' if tags else ""}
+    <a class="small-btn" href="https://www.google.com/maps/search/?api=1&amp;query={q}" target="_blank" rel="noopener">View on map</a>
+  </div>
+</article>'''
+
+
+def projects_page():
+    cards = "".join(project_card(p) for p in load_projects())
+    return f'''<main>
+<section class="page-hero"><div class="wrap">
+  <p class="crumbs"><a href="index.html">Home</a> / Projects</p>
+  <p class="eyebrow">Our projects</p>
+  <h1>Properties we've managed</h1>
+  <p class="lede">Over the past few years we have looked after estates and commercial properties across Lekki, Ajah and Eti-Osa in Lagos.</p>
+</div></section>
+
+<section class="block"><div class="wrap">
+  <div class="projects">{cards}</div>
+</div></section>
+
+<section class="block alt"><div class="wrap">
+  <div class="sec-head">
+    <div><p class="eyebrow">What we do for every property</p><h2>One partner for the whole property</h2></div>
+    <p>We bring several related services under one trusted brand, so property owners and estate associations work with one team instead of many vendors.</p>
+  </div>
+  <div class="svc-grid">
+    {"".join(f'<a class="svc-card" href="{s["file"]}"><img src="img/{s["img"]}" alt="{s["alt"]}" loading="lazy"><div class="body"><h3>{s["name"]}</h3><p>{s["lede"]}</p><span class="more arrow">Learn more </span></div></a>' for s in SERVICE_PAGES)}
+  </div>
+</div></section>
+
+<section class="block tight" style="padding-top:88px"><div class="wrap">
+  <div class="audit-band">
+    <div>
+      <p class="eyebrow" style="color:#cfe9ee">Your property could be next</p>
+      <h2 style="margin-top:10px">Start with a free facility audit</h2>
+      <p>We inspect your property, give you a report of what we find, and propose a service plan built around it.</p>
+      <div class="ctas"><a class="btn btn-light" href="contact.html#audit">Book your free audit</a></div>
+    </div>
+    <ul><li>Building condition assessment</li><li>Maintenance and repair review</li><li>Cleaning and hygiene assessment</li></ul>
+  </div>
+</div></section>
+</main>
+{cta_band()}'''
+
+
 PAGES = {
     "index.html": ("Quantum Leap Management Services", "home", HOME),
     "about.html": ("About Us | Quantum Leap Management Services", "about", ABOUT),
     "services.html": ("Services | Quantum Leap Management Services", "services", SERVICES),
     **{s["file"]: (s["title"], "services", service_page(s), s["desc"]) for s in SERVICE_PAGES},
+    "projects.html": ("Projects | Quantum Leap Management Services", "projects", projects_page(),
+                      "Estates and commercial properties managed by Quantum Leap Management Services in Lekki, Ajah and Eti-Osa, Lagos."),
     "careers.html": ("Careers | Quantum Leap Management Services", "careers", careers_page(SHOW_DRAFTS)),
     "contact.html": ("Contact | Quantum Leap Management Services", "contact", CONTACT),
 }
