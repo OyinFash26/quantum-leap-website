@@ -372,6 +372,8 @@ def esc(s):
 
 
 def apply_link(job, form_url):
+    if job.get("apply_url"):
+        return job["apply_url"], ' target="_blank" rel="noopener"'
     if form_url:
         sep = "&" if "?" in form_url else "?"
         return f"{form_url}{sep}job={quote(job['title'])}", ' target="_blank" rel="noopener"'
@@ -383,7 +385,7 @@ def apply_link(job, form_url):
 
 def job_card(job, form_url, draft=False):
     closing = job.get("closing") or ""
-    meta = [job.get("type"), job.get("location"), job.get("salary")]
+    meta = [job.get("type"), job.get("level"), job.get("location"), job.get("salary")]
     chips = "".join(f"<span>{esc(m)}</span>" for m in meta if m)
     if closing:
         d = date.fromisoformat(closing)
@@ -391,7 +393,7 @@ def job_card(job, form_url, draft=False):
     resp = "".join(f"<li>{esc(r)}</li>" for r in job.get("responsibilities", []))
     reqs = "".join(f"<li>{esc(r)}</li>" for r in job.get("requirements", []))
     href, target = apply_link(job, form_url)
-    via = "Opens the application form" if form_url else f"Opens an email to {EMAIL}. Attach your CV before sending."
+    via = "Opens the application form" if (job.get("apply_url") or form_url) else f"Opens an email to {EMAIL}. Attach your CV before sending."
     flag = '<span class="draft-flag">Draft: not shown on the live site</span>' if draft else ""
     return f'''<article class="job" data-closes="{esc(closing)}">
   <details>

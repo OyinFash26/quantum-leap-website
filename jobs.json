@@ -3,11 +3,42 @@
     "Each job is one block in the 'jobs' list. To add a job, copy a block, change the details, and set 'published' to true.",
     "'closing' is the last day to apply (YYYY-MM-DD). The job disappears from the site automatically after that day. Leave it empty for no closing date.",
     "To remove a job early, set 'published' to false or delete its block.",
+    "A job can have its own 'apply_url' (for example a Google Form for that role). It is used instead of 'apply_form_url' for that job only.",
     "'apply_form_url' is the link to the application form (for example a Tally or Google Form). Leave it empty and the Apply button opens an email to the company instead.",
     "After editing, run: python build.py   then commit and push. The live site updates in about a minute."
   ],
   "apply_form_url": "",
   "jobs": [
+    {
+      "published": true,
+      "title": "Facility & Operations Officer",
+      "type": "Full-time",
+      "level": "Entry-level",
+      "location": "Ajah/Ogombo axis, Lagos",
+      "salary": "",
+      "closing": "",
+      "apply_url": "https://forms.gle/uqnaCMiZdjpk4djd6",
+      "summary": "Support the day-to-day running of the properties we manage in the Ajah/Ogombo area, working with our field teams, clients and service providers, and help grow our client base.",
+      "responsibilities": [
+        "Support the day-to-day supervision, inspection and maintenance of properties and facility operations.",
+        "Coordinate and follow up with cleaners, artisans, technicians and other service providers.",
+        "Prepare weekly and monthly operational reports and maintain property records.",
+        "Track maintenance issues, assigned tasks and outstanding actions.",
+        "Assist with client communication, inquiries, complaints and service follow-up.",
+        "Identify potential clients and properties within the target areas.",
+        "Conduct physical and online marketing activities to generate new leads."
+      ],
+      "requirements": [
+        "OND or HND in any relevant discipline.",
+        "0–2 years of experience.",
+        "Proficiency in Microsoft Word, Excel and PowerPoint.",
+        "Basic marketing and communication skills.",
+        "Good organisational, administrative and record-keeping skills.",
+        "Must be proactive, responsible, teachable and willing to work in the field.",
+        "Must reside within or be able to easily commute to the Ajah/Ogombo axis.",
+        "Previous experience is not mandatory, but internship, NYSC, sales, customer service, property or facility management experience is an advantage."
+      ]
+    },
     {
       "published": false,
       "title": "Janitorial Supervisor",
