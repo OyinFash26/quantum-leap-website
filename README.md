@@ -32,6 +32,14 @@ To preview unpublished jobs locally, run `python build.py --drafts`, but rebuild
 
 Applications: set `"apply_form_url"` to an application form link (for example a Tally form with a file-upload field for CVs, and a hidden field called `job`). If it's empty, the Apply button opens an email to the company instead.
 
+## Search engines and link previews
+
+Every page includes a canonical URL, link-preview tags (`site/img/og-image.jpg`) and structured business data for Google.
+Two settings at the bottom of `build.py`:
+
+- `SITE_URL`: change it if the site moves to its own domain, then rebuild (this also updates `sitemap.xml`).
+- `GOOGLE_SITE_VERIFICATION`: paste the code from Google Search Console's "HTML tag" option, then rebuild and push.
+
 ## Hosting
 
 Deployed on Vercel. `vercel.json` tells Vercel to serve the `site/` folder with no build step.

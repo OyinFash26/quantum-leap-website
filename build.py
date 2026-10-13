@@ -830,32 +830,134 @@ def projects_page():
 
 
 PAGES = {
-    "index.html": ("Quantum Leap Management Services", "home", HOME),
-    "about.html": ("About Us | Quantum Leap Management Services", "about", ABOUT),
-    "services.html": ("Services | Quantum Leap Management Services", "services", SERVICES),
+    "index.html": ("Quantum Leap Management Services | Facility Management in Lagos", "home", HOME,
+                   "Facility management, janitorial services, post-construction cleaning and real estate services for estates, offices and homes in Lagos. Book a free facility audit."),
+    "about.html": ("About Us | Quantum Leap Management Services", "about", ABOUT,
+                   "Quantum Leap Management Services is an integrated facility management, real estate and property solutions company based in Ajah, Lagos. Our vision, mission, team and experience."),
+    "services.html": ("Our Services | Quantum Leap Management Services", "services", SERVICES,
+                      "Facility management, janitorial services, post-construction cleaning and real estate services in Lagos, from one trusted partner. See what each service includes."),
     **{s["file"]: (s["title"], "services", service_page(s), s["desc"]) for s in SERVICE_PAGES},
     "projects.html": ("Projects | Quantum Leap Management Services", "projects", projects_page(),
                       "Estates and commercial properties managed by Quantum Leap Management Services in Lekki, Ajah and Eti-Osa, Lagos."),
-    "careers.html": ("Careers | Quantum Leap Management Services", "careers", careers_page(SHOW_DRAFTS)),
-    "contact.html": ("Contact | Quantum Leap Management Services", "contact", CONTACT),
+    "careers.html": ("Careers | Quantum Leap Management Services", "careers", careers_page(SHOW_DRAFTS),
+                     "Job vacancies at Quantum Leap Management Services in Lagos. See open roles in facility management and operations, and apply online."),
+    "contact.html": ("Contact Us | Quantum Leap Management Services", "contact", CONTACT,
+                     "Contact Quantum Leap Management Services: call or WhatsApp 0802 303 2178, email Quantumleapm@yahoo.com, or visit Suite 23, Double Crown Plaza, Ogombo Road, Ajah, Lagos."),
 }
 
 DESC = "Quantum Leap Management Services Ltd: facility management, janitorial services, post-construction cleaning and real estate services in Lagos, Nigeria. Since 2012."
+
+# ---------------------------------------------------------------- search engines and link previews
+
+# Change this when the site moves to its own domain (e.g. "https://quantumleapmgt.com.ng").
+SITE_URL = "https://quantum-leap-website.vercel.app"
+# Paste the code from Google Search Console's "HTML tag" verification method here (just the content="..." value).
+GOOGLE_SITE_VERIFICATION = ""
+OG_IMAGE = f"{SITE_URL}/img/og-image.jpg"
+
+
+def page_url(fname):
+    return f"{SITE_URL}/{'' if fname == 'index.html' else fname[:-5]}"
+
+
+BUSINESS_ID = f"{SITE_URL}/#business"
+BUSINESS = {
+    "@type": "ProfessionalService",
+    "@id": BUSINESS_ID,
+    "name": "Quantum Leap Management Services Ltd",
+    "alternateName": "Quantum Leap Management Services",
+    "description": "Integrated facility management, real estate and property solutions company in Lagos, Nigeria.",
+    "slogan": "Supporting your critical infrastructure needs.",
+    "url": SITE_URL + "/",
+    "logo": f"{SITE_URL}/img/logo.png",
+    "image": [OG_IMAGE, f"{SITE_URL}/img/double-crown-plaza.jpg"],
+    "telephone": PHONE_INTL,
+    "email": EMAIL,
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Suite 23, Double Crown Plaza, Ogombo Road, off Lekki-Epe Expressway",
+        "addressLocality": "Ajah",
+        "addressRegion": "Lagos",
+        "addressCountry": "NG",
+    },
+    "areaServed": [{"@type": "City", "name": "Lagos"}],
+    "sameAs": [IG, FB],
+    "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": s["name"], "url": page_url(s["file"])}}
+            for s in SERVICE_PAGES
+        ],
+    },
+}
+
+CRUMB_NAMES = {"about.html": "About us", "services.html": "Services", "projects.html": "Projects",
+               "careers.html": "Careers", "contact.html": "Contact"}
+SERVICE_BY_FILE = {s["file"]: s for s in SERVICE_PAGES}
+
+
+def structured_data(fname, title, desc):
+    graph = []
+    if fname in ("index.html", "contact.html", "about.html"):
+        graph.append(BUSINESS)
+    else:
+        graph.append({"@type": "ProfessionalService", "@id": BUSINESS_ID, "name": BUSINESS["name"], "url": SITE_URL + "/"})
+    if fname != "index.html":
+        crumbs = [("Home", page_url("index.html"))]
+        if fname in SERVICE_BY_FILE:
+            crumbs += [("Services", page_url("services.html")), (SERVICE_BY_FILE[fname]["name"], page_url(fname))]
+        else:
+            crumbs.append((CRUMB_NAMES.get(fname, title), page_url(fname)))
+        graph.append({"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": i + 1, "name": n, "item": u} for i, (n, u) in enumerate(crumbs)]})
+    if fname in SERVICE_BY_FILE:
+        s = SERVICE_BY_FILE[fname]
+        graph.append({"@type": "Service", "name": s["name"], "serviceType": s["name"], "description": desc,
+                      "url": page_url(fname), "provider": {"@id": BUSINESS_ID},
+                      "areaServed": {"@type": "City", "name": "Lagos"}})
+        graph.append({"@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in s["faq"]]})
+    data = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=1)
+    return f'<script type="application/ld+json">\n{data.replace("</", "<\\/")}\n</script>'
+
+
+def seo_head(fname, title, desc):
+    url, t, d = page_url(fname), html.escape(title), html.escape(desc)
+    verify = (f'<meta name="google-site-verification" content="{html.escape(GOOGLE_SITE_VERIFICATION)}">\n'
+              if GOOGLE_SITE_VERIFICATION else "")
+    return (f'<link rel="canonical" href="{url}">\n{verify}'
+            f'<meta name="theme-color" content="#12164f">\n'
+            f'<meta property="og:type" content="website">\n'
+            f'<meta property="og:site_name" content="Quantum Leap Management Services">\n'
+            f'<meta property="og:locale" content="en_NG">\n'
+            f'<meta property="og:title" content="{t}">\n'
+            f'<meta property="og:description" content="{d}">\n'
+            f'<meta property="og:url" content="{url}">\n'
+            f'<meta property="og:image" content="{OG_IMAGE}">\n'
+            f'<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n'
+            f'<meta property="og:image:alt" content="Quantum Leap Management Services: facility management and cleaning in Lagos">\n'
+            f'<meta name="twitter:card" content="summary_large_image">\n'
+            f'<meta name="twitter:title" content="{t}">\n'
+            f'<meta name="twitter:description" content="{d}">\n'
+            f'<meta name="twitter:image" content="{OG_IMAGE}">\n'
+            f'{structured_data(fname, title, desc)}\n')
+
 
 for fname, (title, key, body, *rest) in PAGES.items():
     desc = rest[0] if rest else DESC
     inner = f"{header(key)}\n{body}\n{FOOTER}\n"
     full = (f'<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-            f'<title>{title}</title>\n<meta name="description" content="{html.escape(desc)}">\n{FONTS}\n</head>\n<body>\n{inner}</body>\n</html>\n')
+            f'<title>{title}</title>\n<meta name="description" content="{html.escape(desc)}">\n'
+            f'{seo_head(fname, title, desc)}{FONTS}\n</head>\n<body>\n{inner}</body>\n</html>\n')
     (OUT / fname).write_text(full, encoding="utf-8")
     if key == "home":
         (Path(__file__).parent / "_preview-home.html").write_text(f"<title>{title}</title>\n{FONTS}\n{inner}", encoding="utf-8")
 
 # Sitemap and robots.txt so search engines find every page (clean URLs, as Vercel serves them)
-SITE_URL = "https://quantum-leap-website.vercel.app"
 urls = "".join(
-    f"  <url><loc>{SITE_URL}/{'' if f == 'index.html' else f[:-5]}</loc><lastmod>{date.today().isoformat()}</lastmod></url>\n"
+    f"  <url><loc>{page_url(f)}</loc><lastmod>{date.today().isoformat()}</lastmod></url>\n"
     for f in PAGES)
 (OUT / "sitemap.xml").write_text(
     f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n',
