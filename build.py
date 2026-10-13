@@ -37,6 +37,10 @@ IG = "https://www.instagram.com/quantum.leap.management/"
 FB = "https://www.facebook.com/quantumleapmgtservices/"
 MAP = "https://www.google.com/maps/search/?api=1&query=Double+Crown+Plaza+Ogombo+Road+Ajah+Lagos"
 
+# Lagos: head office and the areas served there (shown on lagos.html and in Google's business data)
+LAGOS_AREAS = ["Lekki", "Ajah", "Ibeju-Lekki", "Victoria Island", "Ikoyi"]
+LAGOS_AREAS_TEXT = ", ".join(LAGOS_AREAS[:-1]) + " and " + LAGOS_AREAS[-1]
+
 BROCHURE = "downloads/Quantum-Leap-Brochure-2026.pdf"
 _b = Path(__file__).parent / "site" / BROCHURE
 BROCHURE_SIZE = f"PDF, {_b.stat().st_size / 1_048_576:.1f} MB" if _b.exists() else "PDF"
@@ -116,9 +120,9 @@ FOOTER = f'''<footer class="site">
       <p>Trusted facility managers since 2012. Supporting your critical infrastructure needs.</p>
       <div class="social"><a href="{IG}" target="_blank" rel="noopener" aria-label="Instagram">{icon("ig", 18)}</a><a href="{FB}" target="_blank" rel="noopener" aria-label="Facebook">{icon("fb", 18)}</a></div>
     </div>
-    <div><h3>Company</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About us</a></li><li><a href="services.html">Services</a></li><li><a href="projects.html">Projects</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li><li><a href="{BROCHURE}" download>Download our brochure ({BROCHURE_SIZE})</a></li></ul></div>
+    <div><h3>Company</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About us</a></li><li><a href="services.html">Services</a></li><li><a href="projects.html">Projects</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li><li><a href="lagos.html">Areas we serve in Lagos</a></li><li><a href="{BROCHURE}" download>Download our brochure ({BROCHURE_SIZE})</a></li></ul></div>
     <div><h3>Services</h3><ul><li><a href="facility-management.html">Facility management</a></li><li><a href="janitorial-services.html">Janitorial services</a></li><li><a href="post-construction-cleaning.html">Post-construction cleaning</a></li><li><a href="real-estate-services.html">Real estate services</a></li><li><a href="services.html#audit">Free facility audit</a></li></ul></div>
-    <div><h3>Get in touch</h3><ul><li>{ADDRESS}</li><li>Phone and WhatsApp: {PHONE}</li><li>WhatsApp: {WHATSAPP2}</li><li>{EMAIL}</li></ul></div>
+    <div><h3>Get in touch</h3><ul><li>Head office: {ADDRESS}</li><li>Phone and WhatsApp: {PHONE}</li><li>WhatsApp: {WHATSAPP2}</li><li>{EMAIL}</li></ul></div>
   </div>
   <div class="bottom"><div class="wrap"><span>© <span id="year">2026</span> Quantum Leap Management Services Ltd. All rights reserved.</span><span>Supporting your critical infrastructure needs.</span></div></div>
 </footer>
@@ -253,6 +257,7 @@ ABOUT = f'''<main>
     <p>Quantum Leap Management Services Ltd provides a full range of facility management services that protect property value, improve operational efficiency, and make buildings better for the people who use them, through proactive maintenance and excellent service.</p>
     <p>Our strength is offering several related services under one trusted brand, so clients work with a single partner instead of multiple vendors. From light building cleaning to strategic property management, we leave your environment clean, safe and productive.</p>
     <p>Whether it's a residential estate, commercial building, school, healthcare facility or corporate office, we tailor our solutions to each client's needs.</p>
+    <p>Our head office is in Ajah, Lagos, Nigeria. In Lagos we serve <a href="lagos.html">{LAGOS_AREAS_TEXT}</a>.</p>
     <div class="facts">
       <div class="fact"><b>2012</b><span>Year we started</span></div>
       <div class="fact"><b>4</b><span>Core services under one roof</span></div>
@@ -435,7 +440,7 @@ CONTACT = f'''<main>
     <dl class="c-card"><span class="ic">{icon("phone")}</span><dt>Phone</dt><dd><span class="val">{PHONE}</span><button class="small-btn" type="button" data-copy="{PHONE_INTL}">Copy</button></dd></dl>
     <dl class="c-card"><span class="ic">{icon("chat")}</span><dt>WhatsApp</dt><dd><span class="val">{WHATSAPP}</span><a class="small-btn" href="{WA_LINK}" target="_blank" rel="noopener">Open chat</a></dd><dd><span class="val">{WHATSAPP2}</span><a class="small-btn" href="{WA_LINK2}" target="_blank" rel="noopener">Open chat</a></dd></dl>
     <dl class="c-card"><span class="ic">{icon("mail")}</span><dt>Email</dt><dd><span class="val">{EMAIL}</span><button class="small-btn" type="button" data-copy="{EMAIL}">Copy</button></dd></dl>
-    <dl class="c-card"><span class="ic">{icon("pin")}</span><dt>Office</dt><dd><span class="val">{ADDRESS}</span></dd><dd><a class="small-btn" href="{MAP}" target="_blank" rel="noopener">View on Google Maps</a></dd></dl>
+    <dl class="c-card"><span class="ic">{icon("pin")}</span><dt>Head office</dt><dd><span class="val">{ADDRESS}</span></dd><dd><a class="small-btn" href="{MAP}" target="_blank" rel="noopener">View on Google Maps</a><a class="small-btn" href="lagos.html">Areas we serve in Lagos</a></dd></dl>
     <dl class="c-card"><span class="ic">{icon("ig")}</span><dt>Social media</dt><dd><a class="small-btn" href="{IG}" target="_blank" rel="noopener">Instagram</a><a class="small-btn" href="{FB}" target="_blank" rel="noopener">Facebook</a></dd></dl>
     <dl class="c-card"><span class="ic">{icon("download")}</span><dt>Company brochure</dt><dd><a class="small-btn" href="{BROCHURE}" download>Download brochure</a></dd><dd class="note">{BROCHURE_SIZE}</dd></dl>
   </div>
@@ -837,6 +842,82 @@ def projects_page():
 {cta_band()}'''
 
 
+# ---------------------------------------------------------------- Lagos location page
+
+LAGOS_FAQ = [
+    ("Which parts of Lagos do you cover?",
+     f"We serve {LAGOS_AREAS_TEXT}. If your property is elsewhere in Lagos, contact us and we'll let you know how we can help."),
+    ("Where is your office in Lagos?",
+     f"Our head office is at {ADDRESS}."),
+    ("Which services do you offer in Lagos?",
+     "Facility management, janitorial services, post-construction cleaning and real estate services, either individually or combined under one service plan."),
+    ("Can you inspect my property before we agree a service plan?",
+     "Yes. Book a free facility audit and we'll inspect your property, give you a report of what we find and propose a service plan."),
+]
+
+
+def lagos_page():
+    areas = "".join(
+        f'<a class="area" href="https://www.google.com/maps/search/?api=1&amp;query={quote(a + ", Lagos")}" target="_blank" rel="noopener">'
+        f'{icon("pin", 20)}<span><b>{a}</b><small>Lagos</small></span></a>' for a in LAGOS_AREAS)
+    services = "".join(
+        f'<a class="svc-card" href="{s["file"]}"><img src="img/{s["img"]}" alt="{s["alt"]}" loading="lazy">'
+        f'<div class="body"><h3>{s["name"]}</h3><p>{s["lede"]}</p><span class="more arrow">Learn more </span></div></a>'
+        for s in SERVICE_PAGES)
+    faq = "".join(f'<details class="faq-item"><summary>{q}</summary><p>{a}</p></details>' for q, a in LAGOS_FAQ)
+    return f'''<main>
+<section class="page-hero"><div class="wrap">
+  <p class="crumbs"><a href="index.html">Home</a> / Lagos</p>
+  <p class="eyebrow">Our head office</p>
+  <h1>Facility management in Lagos</h1>
+  <p class="lede">From our head office in Ajah, we provide facility management, janitorial services, post-construction cleaning and real estate services to property owners in {LAGOS_AREAS_TEXT}.</p>
+  <div class="ctas"><a class="btn btn-light" href="contact.html#audit">Book a free facility audit</a>{wa_buttons()}</div>
+</div></section>
+
+<section class="block"><div class="wrap">
+  <div class="sec-head">
+    <div><p class="eyebrow">Areas we serve</p><h2>Where we work in Lagos</h2></div>
+    <p>Our teams look after homes, estates, offices and commercial properties in these areas. If your property is elsewhere in Lagos, get in touch.</p>
+  </div>
+  <div class="areas">{areas}</div>
+</div></section>
+
+<section class="block alt"><div class="wrap split">
+  <div class="copy">
+    <p class="eyebrow">Our Lagos experience</p>
+    <h2>Lagos properties we've managed</h2>
+    <p>Estates and commercial properties we have looked after in Lagos include:</p>
+    <ul class="props">{properties_list()}</ul>
+    <a class="btn btn-primary arrow" href="projects.html">See our projects </a>
+  </div>
+  <div class="media"><img src="img/double-crown-plaza.jpg" alt="Double Crown Plaza on Ogombo Road, Ajah, Lagos" loading="lazy"></div>
+</div></section>
+
+<section class="block"><div class="wrap">
+  <div class="sec-head">
+    <div><p class="eyebrow">Services in Lagos</p><h2>Everything your Lagos property needs</h2></div>
+    <p>Work with one partner instead of several vendors, from routine maintenance to a deep clean after construction.</p>
+  </div>
+  <div class="svc-grid">{services}</div>
+</div></section>
+
+<section class="block alt"><div class="wrap split">
+  <div class="copy">
+    <p class="eyebrow">Visit or contact us</p>
+    <h2>Our Lagos head office</h2>
+    <dl class="team-units">
+      <div><dt>Address</dt><dd>{ADDRESS}</dd></div>
+      <div><dt>Phone and WhatsApp</dt><dd>{PHONE}<br>WhatsApp: {WHATSAPP2}</dd></div>
+      <div><dt>Email</dt><dd>{EMAIL}</dd></div>
+      <div><dt>Directions</dt><dd><a href="{MAP}" target="_blank" rel="noopener">View on Google Maps</a></dd></div>
+    </dl>
+  </div>
+  <div class="faq">{faq}</div>
+</div></section>
+</main>
+{cta_band()}'''
+
+
 PAGES = {
     "index.html": ("Quantum Leap Management Services | Facility & Property Management", "home", HOME,
                    "Facility management, janitorial services, post-construction cleaning and real estate services for estates, offices, commercial buildings and homes. Book a free facility audit."),
@@ -847,6 +928,8 @@ PAGES = {
     **{s["file"]: (s["title"], "services", service_page(s), s["desc"]) for s in SERVICE_PAGES},
     "projects.html": ("Projects | Quantum Leap Management Services", "projects", projects_page(),
                       "Residential estates and commercial properties managed by Quantum Leap Management Services."),
+    "lagos.html": ("Facility Management in Lagos | Quantum Leap Management Services", "lagos", lagos_page(),
+                   f"Facility management, janitorial, post-construction cleaning and real estate services in {LAGOS_AREAS_TEXT}, Lagos. Head office in Ajah. Book a free facility audit."),
     "careers.html": ("Careers | Quantum Leap Management Services", "careers", careers_page(SHOW_DRAFTS),
                      "Job vacancies at Quantum Leap Management Services. See open roles in facility management and operations, and apply online."),
     "contact.html": ("Contact Us | Quantum Leap Management Services", "contact", CONTACT,
@@ -888,6 +971,8 @@ BUSINESS = {
         "addressRegion": "Lagos",
         "addressCountry": "NG",
     },
+    "areaServed": [{"@type": "City", "name": "Lagos", "address": {"@type": "PostalAddress", "addressRegion": "Lagos", "addressCountry": "NG"}}]
+                  + [{"@type": "Place", "name": f"{a}, Lagos"} for a in LAGOS_AREAS],
     "sameAs": [IG, FB],
     "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -899,14 +984,14 @@ BUSINESS = {
     },
 }
 
-CRUMB_NAMES = {"about.html": "About us", "services.html": "Services", "projects.html": "Projects",
+CRUMB_NAMES = {"lagos.html": "Lagos", "about.html": "About us", "services.html": "Services", "projects.html": "Projects",
                "careers.html": "Careers", "contact.html": "Contact"}
 SERVICE_BY_FILE = {s["file"]: s for s in SERVICE_PAGES}
 
 
 def structured_data(fname, title, desc):
     graph = []
-    if fname in ("index.html", "contact.html", "about.html"):
+    if fname in ("index.html", "contact.html", "about.html", "lagos.html"):
         graph.append(BUSINESS)
     else:
         graph.append({"@type": "ProfessionalService", "@id": BUSINESS_ID, "name": BUSINESS["name"], "url": SITE_URL + "/"})
@@ -924,6 +1009,9 @@ def structured_data(fname, title, desc):
                       "url": page_url(fname), "provider": {"@id": BUSINESS_ID}})
         graph.append({"@type": "FAQPage", "mainEntity": [
             {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in s["faq"]]})
+    if fname == "lagos.html":
+        graph.append({"@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in LAGOS_FAQ]})
     data = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=1)
     return f'<script type="application/ld+json">\n{data.replace("</", "<\\/")}\n</script>'
 

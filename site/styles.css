@@ -386,3 +386,14 @@ footer.site .logo-mark { background: #ffffff; padding: 3px; }
 
 /* WhatsApp buttons (one per number) */
 .ctas .btn svg { flex: none; }
+
+/* Location page: areas served */
+.areas { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+@media (max-width: 960px) { .areas { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 560px) { .areas { grid-template-columns: 1fr 1fr; } }
+.area { display: flex; gap: 12px; align-items: center; padding: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; text-decoration: none; transition: border-color .15s, transform .15s; min-width: 0; }
+.area:hover { border-color: var(--royal); transform: translateY(-2px); }
+.area svg { flex: none; color: var(--royal); }
+.area b { display: block; font: 600 1.02rem/1.25 var(--display); }
+.area small { display: block; color: var(--muted); font-size: .82rem; }
+.team-units a { color: var(--royal); }
