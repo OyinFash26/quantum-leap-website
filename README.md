@@ -51,7 +51,7 @@ Most photos in `site/img/` come from [Pexels](https://www.pexels.com) and are us
 
 | File | Pexels photo |
 | --- | --- |
-| hero.jpg | https://www.pexels.com/photo/8488034/ |
+| hero.jpg | Company profile (QLMS Profile 2026) |
 | facility.jpg | https://www.pexels.com/photo/34557960/ |
 | janitorial.jpg | Company brochure (QL Brochure 2026) |
 | post-construction.jpg | https://www.pexels.com/photo/6197122/ |

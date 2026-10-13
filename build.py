@@ -29,6 +29,8 @@ PHONE = "0802 303 2178"
 PHONE_INTL = "+2348023032178"
 WHATSAPP = "0802 303 2178"
 WA_LINK = "https://wa.me/2348023032178"
+WHATSAPP2 = "0816 311 7579"
+WA_LINK2 = "https://wa.me/2348163117579"
 EMAIL = "Quantumleapm@yahoo.com"
 ADDRESS = "Suite 23, Double Crown Plaza, Ogombo Road, off Lekki-Epe Expressway, Ajah, Lagos"
 IG = "https://www.instagram.com/quantum.leap.management/"
@@ -89,7 +91,7 @@ def header(active):
     links = "".join(
         f'<a href="{href}"{" aria-current=\"page\"" if key == active else ""}>{label}</a>' for href, label, key in NAV)
     return f'''<div class="strip"><div class="wrap">
-  <span>Call or WhatsApp: <b>{PHONE}</b></span>
+  <span>Call or WhatsApp: <b>{PHONE}</b><span class="hide-sm"> · WhatsApp: <b>{WHATSAPP2}</b></span></span>
   <span class="hide-sm">{EMAIL}</span>
   <span class="socials-mini"><a href="{IG}" target="_blank" rel="noopener">Instagram</a><a href="{FB}" target="_blank" rel="noopener">Facebook</a></span>
 </div></div>
@@ -110,7 +112,7 @@ FOOTER = f'''<footer class="site">
     </div>
     <div><h3>Company</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About us</a></li><li><a href="services.html">Services</a></li><li><a href="projects.html">Projects</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li><li><a href="{BROCHURE}" download>Download our brochure ({BROCHURE_SIZE})</a></li></ul></div>
     <div><h3>Services</h3><ul><li><a href="facility-management.html">Facility management</a></li><li><a href="janitorial-services.html">Janitorial services</a></li><li><a href="post-construction-cleaning.html">Post-construction cleaning</a></li><li><a href="real-estate-services.html">Real estate services</a></li><li><a href="services.html#audit">Free facility audit</a></li></ul></div>
-    <div><h3>Get in touch</h3><ul><li>{ADDRESS}</li><li>Phone and WhatsApp: {PHONE}</li><li>{EMAIL}</li></ul></div>
+    <div><h3>Get in touch</h3><ul><li>{ADDRESS}</li><li>Phone and WhatsApp: {PHONE}</li><li>WhatsApp: {WHATSAPP2}</li><li>{EMAIL}</li></ul></div>
   </div>
   <div class="bottom"><div class="wrap"><span>© <span id="year">2026</span> Quantum Leap Management Services Ltd. All rights reserved.</span><span>Ajah, Lagos, Nigeria</span></div></div>
 </footer>
@@ -157,7 +159,7 @@ HOME = f'''<main>
     <div class="ctas"><a class="btn btn-primary" href="contact.html#audit">Book a free facility audit</a><a class="btn btn-ghost" href="services.html">Explore our services</a></div>
   </div>
   <div class="hero-media">
-    <img class="main-img" src="img/hero.jpg" alt="Engineer in a hard hat and safety vest filling in an inspection checklist" width="1100" height="1056">
+    <img class="main-img" src="img/hero.jpg" alt="Smiling engineer in a hard hat and safety vest talking on a walkie-talkie on site" width="1100" height="1058">
     <div class="badge"><span class="stamp">Free</span><b>Facility audit</b><span>We assess your property and show you what needs attention.</span></div>
   </div>
 </div></section>
@@ -425,7 +427,7 @@ CONTACT = f'''<main>
 <section class="block" id="audit" style="scroll-margin-top:90px"><div class="wrap contact-grid">
   <div class="contact-cards">
     <dl class="c-card"><span class="ic">{icon("phone")}</span><dt>Phone</dt><dd><span class="val">{PHONE}</span><button class="small-btn" type="button" data-copy="{PHONE_INTL}">Copy</button></dd></dl>
-    <dl class="c-card"><span class="ic">{icon("chat")}</span><dt>WhatsApp</dt><dd><span class="val">{WHATSAPP}</span><a class="small-btn" href="{WA_LINK}" target="_blank" rel="noopener">Open chat</a></dd></dl>
+    <dl class="c-card"><span class="ic">{icon("chat")}</span><dt>WhatsApp</dt><dd><span class="val">{WHATSAPP}</span><a class="small-btn" href="{WA_LINK}" target="_blank" rel="noopener">Open chat</a></dd><dd><span class="val">{WHATSAPP2}</span><a class="small-btn" href="{WA_LINK2}" target="_blank" rel="noopener">Open chat</a></dd></dl>
     <dl class="c-card"><span class="ic">{icon("mail")}</span><dt>Email</dt><dd><span class="val">{EMAIL}</span><button class="small-btn" type="button" data-copy="{EMAIL}">Copy</button></dd></dl>
     <dl class="c-card"><span class="ic">{icon("pin")}</span><dt>Office</dt><dd><span class="val">{ADDRESS}</span></dd><dd><a class="small-btn" href="{MAP}" target="_blank" rel="noopener">View on Google Maps</a></dd></dl>
     <dl class="c-card"><span class="ic">{icon("ig")}</span><dt>Social media</dt><dd><a class="small-btn" href="{IG}" target="_blank" rel="noopener">Instagram</a><a class="small-btn" href="{FB}" target="_blank" rel="noopener">Facebook</a></dd></dl>
