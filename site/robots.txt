@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://quantum-leap-website.oyinfasanu.workers.dev/sitemap.xml
+Sitemap: https://www.quantumleapmgt.workers.dev/sitemap.xml

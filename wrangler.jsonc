@@ -1,6 +1,6 @@
 // Cloudflare deploy settings: serve only the built website in site/ as static files.
 {
-  "name": "quantum-leap-website",
+  "name": "www",
   "compatibility_date": "2026-09-01",
   "assets": {
     "directory": "./site",

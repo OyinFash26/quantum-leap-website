@@ -941,7 +941,7 @@ DESC = "Quantum Leap Management Services Ltd: facility management, janitorial se
 # ---------------------------------------------------------------- search engines and link previews
 
 # Change this when the site moves to its own domain (e.g. "https://quantumleapmgt.com.ng").
-SITE_URL = "https://quantum-leap-website.oyinfasanu.workers.dev"
+SITE_URL = "https://www.quantumleapmgt.workers.dev"
 # Paste the code from Google Search Console's "HTML tag" verification method here (just the content="..." value).
 GOOGLE_SITE_VERIFICATION = ""
 OG_IMAGE = f"{SITE_URL}/img/og-image.jpg"

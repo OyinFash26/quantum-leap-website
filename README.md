@@ -42,5 +42,5 @@ Two settings at the bottom of `build.py`:
 
 ## Hosting
 
-Hosted on Cloudflare (Workers static assets), connected to this GitHub repository: every push to `main` redeploys.
+Hosted on Cloudflare (Workers static assets) at https://www.quantumleapmgt.workers.dev, connected to this GitHub repository: every push to `main` redeploys.
 `wrangler.jsonc` tells Cloudflare to serve only the `site/` folder. `vercel.json` permanently redirects the old Vercel address (quantum-leap-website.vercel.app) to the Cloudflare site.
