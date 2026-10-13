@@ -1,6 +1,6 @@
 // Quantum Leap Management Services: shared page behaviour.
 (function () {
-  var WHATSAPP = "2348023032178";
+  var WHATSAPP = [["2348023032178", "0802 303 2178"], ["2348163117579", "0816 311 7579"]];
 
   // Mobile menu
   var btn = document.querySelector(".menu-btn"), nav = document.querySelector("nav.main");
@@ -63,10 +63,19 @@
 
     var box = document.createElement("div");
     box.className = "ready";
-    box.innerHTML = '<b>Your request is ready to send</b><span>Tap below to send it to us on WhatsApp, or copy it into an email to Quantumleapm@yahoo.com.</span><pre></pre><div class="row"><a class="btn btn-primary" target="_blank" rel="noopener">Send on WhatsApp</a><button class="btn btn-ghost" type="button">Copy message</button></div>';
+    box.innerHTML = '<b>Your request is ready to send</b><span>Send it to either of our WhatsApp numbers, or copy it into an email to Quantumleapm@yahoo.com.</span><pre></pre><div class="row"></div>';
     box.querySelector("pre").textContent = msg;
-    box.querySelector("a").href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
-    var cb = box.querySelector("button");
+    var row = box.querySelector(".row");
+    WHATSAPP.forEach(function (w) {
+      var a = document.createElement("a");
+      a.className = "btn btn-primary"; a.target = "_blank"; a.rel = "noopener";
+      a.href = "https://wa.me/" + w[0] + "?text=" + encodeURIComponent(msg);
+      a.textContent = "Send to " + w[1];
+      row.appendChild(a);
+    });
+    var cb = document.createElement("button");
+    cb.className = "btn btn-ghost"; cb.type = "button"; cb.textContent = "Copy message";
+    row.appendChild(cb);
     cb.addEventListener("click", function () { copyText(msg, cb); });
     var old = form.querySelector(".ready"); if (old) old.remove();
     form.appendChild(box);

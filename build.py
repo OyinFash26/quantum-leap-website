@@ -79,6 +79,12 @@ def icon(name, size=22):
             f'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{paths[name]}</svg>')
 
 
+
+def wa_buttons(cls="btn-outline-light"):
+    return "".join(
+        f'<a class="btn {cls}" href="{link}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp: {num}">{icon("chat", 18)}WhatsApp {num}</a>'
+        for num, link in ((WHATSAPP, WA_LINK), (WHATSAPP2, WA_LINK2)))
+
 LOGO = '<img class="logo-mark" src="img/logo.png" width="40" height="40" alt="">'
 
 NAV = [("index.html", "Home", "home"), ("about.html", "About us", "about"),
@@ -114,7 +120,7 @@ FOOTER = f'''<footer class="site">
     <div><h3>Services</h3><ul><li><a href="facility-management.html">Facility management</a></li><li><a href="janitorial-services.html">Janitorial services</a></li><li><a href="post-construction-cleaning.html">Post-construction cleaning</a></li><li><a href="real-estate-services.html">Real estate services</a></li><li><a href="services.html#audit">Free facility audit</a></li></ul></div>
     <div><h3>Get in touch</h3><ul><li>{ADDRESS}</li><li>Phone and WhatsApp: {PHONE}</li><li>WhatsApp: {WHATSAPP2}</li><li>{EMAIL}</li></ul></div>
   </div>
-  <div class="bottom"><div class="wrap"><span>© <span id="year">2026</span> Quantum Leap Management Services Ltd. All rights reserved.</span><span>Ajah, Lagos, Nigeria</span></div></div>
+  <div class="bottom"><div class="wrap"><span>© <span id="year">2026</span> Quantum Leap Management Services Ltd. All rights reserved.</span><span>Supporting your critical infrastructure needs.</span></div></div>
 </footer>
 <script src="site.js"></script>'''
 
@@ -122,7 +128,7 @@ FOOTER = f'''<footer class="site">
 def cta_band():
     return f'''<section class="cta-band"><div class="wrap">
   <div><h2>Ready to give your property the care it deserves?</h2><p>Book a free facility audit, or send us a message and we'll get back to you.</p></div>
-  <div class="ctas"><a class="btn btn-light" href="contact.html#audit">Book a free audit</a><a class="btn btn-outline-light" href="{WA_LINK}" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
+  <div class="ctas"><a class="btn btn-light" href="contact.html#audit">Book a free audit</a>{wa_buttons()}</div>
 </div></section>'''
 
 
@@ -152,8 +158,8 @@ PROCESS = '''<div class="steps six">
 HOME = f'''<main>
 <section class="hero"><div class="wrap">
   <div>
-    <div class="since"><span>Since 2012</span><p class="eyebrow">Facility management · Lagos</p></div>
-    <h1>Trusted <span>facility managers</span> for Lagos properties</h1>
+    <div class="since"><span>Since 2012</span><p class="eyebrow">Facility &amp; property management</p></div>
+    <h1>Trusted <span>facility managers</span> for your property</h1>
     <p class="tagline">Supporting your critical infrastructure needs.</p>
     <p class="lede">Your property is one of your biggest investments. We take care of the maintenance, cleaning and day-to-day running, so it stays safe, clean and valuable, and you have one less thing to worry about.</p>
     <div class="ctas"><a class="btn btn-primary" href="contact.html#audit">Book a free facility audit</a><a class="btn btn-ghost" href="services.html">Explore our services</a></div>
@@ -170,7 +176,7 @@ HOME = f'''<main>
     <p>From routine maintenance to a deep clean after construction, one team takes care of it all. Choose a single service or combine them.</p>
   </div>
   <div class="svc-grid">
-    <a class="svc-card" href="facility-management.html"><img src="img/facility.jpg" alt="Residential high-rise in Lagos" loading="lazy"><div class="body"><h3>Facility management</h3><p>Keeping buildings running efficiently, safely and cost-effectively over the long run.</p><span class="more arrow">Learn more </span></div></a>
+    <a class="svc-card" href="facility-management.html"><img src="img/facility.jpg" alt="Residential high-rise apartment building" loading="lazy"><div class="body"><h3>Facility management</h3><p>Keeping buildings running efficiently, safely and cost-effectively over the long run.</p><span class="more arrow">Learn more </span></div></a>
     <a class="svc-card" href="janitorial-services.html"><img src="img/janitorial.jpg" alt="Cleaning crew mopping, wiping and washing windows in a modern kitchen" loading="lazy"><div class="body"><h3>Janitorial services</h3><p>Clean, hygienic and presentable spaces for daily use, with light and deep cleaning plans.</p><span class="more arrow">Learn more </span></div></a>
     <a class="svc-card" href="post-construction-cleaning.html"><img src="img/post-construction.jpg" alt="Cleaner in overalls washing the windows of a newly finished home" loading="lazy"><div class="body"><h3>Post-construction cleaning</h3><p>Preparing newly built or renovated properties for handover, occupation or sale.</p><span class="more arrow">Learn more </span></div></a>
     <a class="svc-card" href="real-estate-services.html"><img src="img/real-estate.jpg" alt="Real estate agent holding house keys and a SOLD sign" loading="lazy"><div class="body"><h3>Real estate services</h3><p>Property sourcing, leasing and basic property management for owners and clients.</p><span class="more arrow">Learn more </span></div></a>
@@ -178,7 +184,7 @@ HOME = f'''<main>
 </div></section>
 
 <section class="block alt"><div class="wrap split">
-  <div class="media"><img src="img/team.jpg" alt="Team meeting in an office in Lagos" loading="lazy"></div>
+  <div class="media"><img src="img/team.jpg" alt="Team meeting in a modern office" loading="lazy"></div>
   <div class="copy">
     <p class="eyebrow">About Quantum Leap</p>
     <h2>Helping clients manage, maintain, improve and transform their properties</h2>
@@ -202,7 +208,7 @@ HOME = f'''<main>
   <div class="copy">
     <p class="eyebrow">Our experience</p>
     <h2>Properties we've managed</h2>
-    <p>We have worked with estates and commercial properties across Lekki, Ajah and Eti-Osa, including:</p>
+    <p>We have worked with residential estates and commercial properties, including:</p>
     <ul class="props">{properties_list()}</ul>
     <a class="btn btn-primary arrow" href="projects.html">See our projects </a>
   </div>
@@ -223,9 +229,9 @@ HOME = f'''<main>
 <section class="block alt"><div class="wrap split flip">
   <div class="media"><img src="img/moving-in.jpg" alt="Couple carrying boxes into their new home" loading="lazy"></div>
   <div class="copy">
-    <p class="eyebrow">Just bought a home in Lagos?</p>
+    <p class="eyebrow">Just bought a new home?</p>
     <h2>Before you unpack, get the house ready</h2>
-    <p>Buying a home in Lagos is a big deal. A well-maintained home is more comfortable and holds its value better over time. We inspect, clean and fix the small things before you move in.</p>
+    <p>Buying a home is a big deal. A well-maintained home is more comfortable and holds its value better over time. We inspect, clean and fix the small things before you move in.</p>
     <a class="btn btn-primary arrow" href="services.html#new-home">See our move-in checklist </a>
   </div>
 </div></section>
@@ -250,7 +256,7 @@ ABOUT = f'''<main>
     <div class="facts">
       <div class="fact"><b>2012</b><span>Year we started</span></div>
       <div class="fact"><b>4</b><span>Core services under one roof</span></div>
-      <div class="fact"><b>Ajah</b><span>Office on Ogombo Road, Lagos</span></div>
+      <div class="fact"><b>1</b><span>Partner instead of multiple vendors</span></div>
     </div>
   </div>
   <div class="media"><img src="img/about-house.jpg" alt="Newly built house in Abuja" loading="lazy"></div>
@@ -282,7 +288,7 @@ ABOUT = f'''<main>
 </div></section>
 
 <section class="block"><div class="wrap split flip">
-  <div class="media"><img src="img/engineer.jpg" alt="Engineer in a hard hat at an electrical substation in Nigeria" loading="lazy"></div>
+  <div class="media"><img src="img/engineer.jpg" alt="Engineer in a hard hat at an electrical substation" loading="lazy"></div>
   <div class="copy">
     <p class="eyebrow">Our service delivery team</p>
     <h2>A flexible team that scales with your property</h2>
@@ -335,7 +341,7 @@ SERVICES = f'''<main>
 
 <section class="block"><div class="wrap">
   <article class="svc-detail" id="facility">
-    <div class="media"><img src="img/facility.jpg" alt="Residential high-rise in Lagos" loading="lazy"></div>
+    <div class="media"><img src="img/facility.jpg" alt="Residential high-rise apartment building" loading="lazy"></div>
     <div class="copy">
       <span class="num">Service 01</span>
       <h2>Facility management</h2>
@@ -400,7 +406,7 @@ SERVICES = f'''<main>
   <div class="split">
     <div class="copy">
       <p class="eyebrow">For new homeowners</p>
-      <h2>What to do after buying a house in Lagos</h2>
+      <h2>What to do after buying a new home</h2>
       <p>Buying a home is a big deal. Before you unpack, there are a few steps you shouldn't skip. A well-maintained home is more comfortable and holds its value better over time.</p>
       <a class="btn btn-primary" href="contact.html#post-construction">Get a move-in quote</a>
     </div>
@@ -441,7 +447,7 @@ CONTACT = f'''<main>
     <div class="field"><label for="q-phone">Phone or WhatsApp</label><input id="q-phone" name="phone" type="tel" autocomplete="tel" placeholder="0803 000 0000"></div>
     <div class="field"><label for="q-type">Property type</label>
       <select id="q-type" name="type"><option>Residential estate</option><option>Private home</option><option>Office</option><option>Plaza or shopping centre</option><option>School</option><option>Hospital</option><option>Other commercial property</option></select></div>
-    <div class="field"><label for="q-area">Location</label><input id="q-area" name="area" placeholder="e.g. Ajah, Lekki Phase 1"></div>
+    <div class="field"><label for="q-area">Location</label><input id="q-area" name="area" placeholder="City and area"></div>
     <div class="field full"><span class="label">What do you need?</span>
       <div class="checks">
         <label><input type="checkbox" id="s-audit" name="svc" value="Free facility audit">Free facility audit</label>
@@ -526,7 +532,7 @@ def careers_page(show_drafts=False):
   <p class="crumbs"><a href="index.html">Home</a> / Careers</p>
   <p class="eyebrow">Careers</p>
   <h1>Build your career with Quantum Leap</h1>
-  <p class="lede">We look after homes, estates, offices and commercial properties across Lagos. If you take pride in good work, we'd like to hear from you.</p>
+  <p class="lede">We look after homes, estates, offices and commercial properties. If you take pride in good work, we'd like to hear from you.</p>
 </div></section>
 
 <section class="block" id="openings" style="scroll-margin-top:90px"><div class="wrap">
@@ -576,9 +582,9 @@ def careers_page(show_drafts=False):
 SERVICE_PAGES = [
     {
         "file": "facility-management.html", "anchor": "facility", "contact": "facility",
-        "name": "Facility management", "img": "facility.jpg", "alt": "Residential high-rise in Lagos",
-        "title": "Facility Management in Lagos | Quantum Leap Management Services",
-        "desc": "Facility management for estates, offices and commercial buildings in Lagos: maintenance, vendor coordination, inspections, security and reporting. Book a free facility audit.",
+        "name": "Facility management", "img": "facility.jpg", "alt": "Residential high-rise apartment building",
+        "title": "Facility Management Services | Quantum Leap Management Services",
+        "desc": "Facility management for estates, offices and commercial buildings: maintenance, vendor coordination, inspections, security and reporting. Book a free facility audit.",
         "headline": "Facility management that keeps your property running",
         "lede": "We make sure buildings and facilities run efficiently, safely and cost-effectively over the long run.",
         "intro": [
@@ -612,8 +618,8 @@ SERVICE_PAGES = [
     {
         "file": "janitorial-services.html", "anchor": "janitorial", "contact": "janitorial",
         "name": "Janitorial services", "img": "janitorial.jpg", "alt": "Cleaning crew mopping, wiping and washing windows in a modern kitchen",
-        "title": "Janitorial and Cleaning Services in Lagos | Quantum Leap Management Services",
-        "desc": "Office, residential and estate cleaning in Lagos. Daily, weekly and periodic cleaning, restroom and common-area sanitation, and supervised cleaning staff.",
+        "title": "Janitorial and Cleaning Services | Quantum Leap Management Services",
+        "desc": "Office, residential and estate cleaning. Daily, weekly and periodic cleaning, restroom and common-area sanitation, and supervised cleaning staff.",
         "headline": "Clean, hygienic spaces, every day",
         "lede": "We keep offices, homes and estates clean, hygienic and presentable for daily use.",
         "intro": [
@@ -644,8 +650,8 @@ SERVICE_PAGES = [
     {
         "file": "post-construction-cleaning.html", "anchor": "post-construction", "contact": "post-construction",
         "name": "Post-construction cleaning", "img": "post-construction.jpg", "alt": "Cleaner in overalls washing the windows of a newly finished home",
-        "title": "Post-Construction Cleaning in Lagos | Quantum Leap Management Services",
-        "desc": "Post-construction and after-renovation cleaning in Lagos. Debris and dust removal, deep cleaning, window and facade cleaning, and handover-ready finishing.",
+        "title": "Post-Construction Cleaning Services | Quantum Leap Management Services",
+        "desc": "Post-construction and after-renovation cleaning. Debris and dust removal, deep cleaning, window and facade cleaning, and handover-ready finishing.",
         "headline": "Handover-ready after building or renovation",
         "lede": "We prepare newly built or renovated properties for handover, occupation or sale.",
         "intro": [
@@ -675,8 +681,8 @@ SERVICE_PAGES = [
     {
         "file": "real-estate-services.html", "anchor": "real-estate", "contact": "real-estate",
         "name": "Real estate services", "img": "real-estate.jpg", "alt": "Real estate agent holding house keys and a SOLD sign",
-        "title": "Real Estate Services in Lagos | Quantum Leap Management Services",
-        "desc": "Property sourcing and listing, inspections, leasing and tenant coordination, sales and lettings support, and handover documentation in Lagos.",
+        "title": "Real Estate Services | Quantum Leap Management Services",
+        "desc": "Property sourcing and listing, inspections, leasing and tenant coordination, sales and lettings support, and handover documentation.",
         "headline": "Support for buying, letting and managing property",
         "lede": "We support property owners and clients with property sourcing, leasing and basic property management.",
         "intro": [
@@ -721,7 +727,7 @@ def service_page(s):
   <p class="eyebrow">{s["name"]}</p>
   <h1>{s["headline"]}</h1>
   <p class="lede">{s["lede"]}</p>
-  <div class="ctas"><a class="btn btn-light" href="contact.html#{s["contact"]}">Request this service</a><a class="btn btn-outline-light" href="{WA_LINK}" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
+  <div class="ctas"><a class="btn btn-light" href="contact.html#{s["contact"]}">Request this service</a>{wa_buttons()}</div>
 </div></section>
 
 <section class="block"><div class="wrap split">
@@ -799,7 +805,7 @@ def projects_page():
   <p class="crumbs"><a href="index.html">Home</a> / Projects</p>
   <p class="eyebrow">Our projects</p>
   <h1>Properties we've managed</h1>
-  <p class="lede">Over the past few years we have looked after estates and commercial properties across Lekki, Ajah and Eti-Osa in Lagos.</p>
+  <p class="lede">A selection of the residential estates and commercial properties we have looked after.</p>
 </div></section>
 
 <section class="block"><div class="wrap">
@@ -832,22 +838,22 @@ def projects_page():
 
 
 PAGES = {
-    "index.html": ("Quantum Leap Management Services | Facility Management in Lagos", "home", HOME,
-                   "Facility management, janitorial services, post-construction cleaning and real estate services for estates, offices and homes in Lagos. Book a free facility audit."),
+    "index.html": ("Quantum Leap Management Services | Facility & Property Management", "home", HOME,
+                   "Facility management, janitorial services, post-construction cleaning and real estate services for estates, offices, commercial buildings and homes. Book a free facility audit."),
     "about.html": ("About Us | Quantum Leap Management Services", "about", ABOUT,
-                   "Quantum Leap Management Services is an integrated facility management, real estate and property solutions company based in Ajah, Lagos. Our vision, mission, team and experience."),
+                   "Quantum Leap Management Services is an integrated facility management, real estate and property solutions company. Our vision, mission, team and experience."),
     "services.html": ("Our Services | Quantum Leap Management Services", "services", SERVICES,
-                      "Facility management, janitorial services, post-construction cleaning and real estate services in Lagos, from one trusted partner. See what each service includes."),
+                      "Facility management, janitorial services, post-construction cleaning and real estate services from one trusted partner. See what each service includes."),
     **{s["file"]: (s["title"], "services", service_page(s), s["desc"]) for s in SERVICE_PAGES},
     "projects.html": ("Projects | Quantum Leap Management Services", "projects", projects_page(),
-                      "Estates and commercial properties managed by Quantum Leap Management Services in Lekki, Ajah and Eti-Osa, Lagos."),
+                      "Residential estates and commercial properties managed by Quantum Leap Management Services."),
     "careers.html": ("Careers | Quantum Leap Management Services", "careers", careers_page(SHOW_DRAFTS),
-                     "Job vacancies at Quantum Leap Management Services in Lagos. See open roles in facility management and operations, and apply online."),
+                     "Job vacancies at Quantum Leap Management Services. See open roles in facility management and operations, and apply online."),
     "contact.html": ("Contact Us | Quantum Leap Management Services", "contact", CONTACT,
                      "Contact Quantum Leap Management Services: call or WhatsApp 0802 303 2178, email Quantumleapm@yahoo.com, or visit Suite 23, Double Crown Plaza, Ogombo Road, Ajah, Lagos."),
 }
 
-DESC = "Quantum Leap Management Services Ltd: facility management, janitorial services, post-construction cleaning and real estate services in Lagos, Nigeria. Since 2012."
+DESC = "Quantum Leap Management Services Ltd: facility management, janitorial services, post-construction cleaning and real estate services. Since 2012."
 
 # ---------------------------------------------------------------- search engines and link previews
 
@@ -868,7 +874,7 @@ BUSINESS = {
     "@id": BUSINESS_ID,
     "name": "Quantum Leap Management Services Ltd",
     "alternateName": "Quantum Leap Management Services",
-    "description": "Integrated facility management, real estate and property solutions company in Lagos, Nigeria.",
+    "description": "Integrated facility management, real estate and property solutions company.",
     "slogan": "Supporting your critical infrastructure needs.",
     "url": SITE_URL + "/",
     "logo": f"{SITE_URL}/img/logo.png",
@@ -882,7 +888,6 @@ BUSINESS = {
         "addressRegion": "Lagos",
         "addressCountry": "NG",
     },
-    "areaServed": [{"@type": "City", "name": "Lagos"}],
     "sameAs": [IG, FB],
     "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -916,8 +921,7 @@ def structured_data(fname, title, desc):
     if fname in SERVICE_BY_FILE:
         s = SERVICE_BY_FILE[fname]
         graph.append({"@type": "Service", "name": s["name"], "serviceType": s["name"], "description": desc,
-                      "url": page_url(fname), "provider": {"@id": BUSINESS_ID},
-                      "areaServed": {"@type": "City", "name": "Lagos"}})
+                      "url": page_url(fname), "provider": {"@id": BUSINESS_ID}})
         graph.append({"@type": "FAQPage", "mainEntity": [
             {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in s["faq"]]})
     data = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=1)
@@ -938,7 +942,7 @@ def seo_head(fname, title, desc):
             f'<meta property="og:url" content="{url}">\n'
             f'<meta property="og:image" content="{OG_IMAGE}">\n'
             f'<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n'
-            f'<meta property="og:image:alt" content="Quantum Leap Management Services: facility management and cleaning in Lagos">\n'
+            f'<meta property="og:image:alt" content="Quantum Leap Management Services: facility management and cleaning services">\n'
             f'<meta name="twitter:card" content="summary_large_image">\n'
             f'<meta name="twitter:title" content="{t}">\n'
             f'<meta name="twitter:description" content="{d}">\n'

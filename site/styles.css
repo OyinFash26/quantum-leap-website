@@ -383,3 +383,6 @@ footer.site .logo-mark { background: #ffffff; padding: 3px; }
 .btn-note { font-weight: 500; opacity: .8; font-size: .82rem; }
 @media (max-width: 760px) { .brochure-band { grid-template-columns: 1fr; } }
 .c-card dd.note { grid-column: 2; font-weight: 400; font-size: .85rem; color: var(--muted); }
+
+/* WhatsApp buttons (one per number) */
+.ctas .btn svg { flex: none; }
