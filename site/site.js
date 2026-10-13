@@ -73,3 +73,17 @@
     box.scrollIntoView({ block: "nearest" });
   });
 })();
+
+// Careers: hide jobs whose closing date has passed (the build also skips them; this covers days between builds)
+(function () {
+  var jobs = document.querySelectorAll(".job[data-closes]");
+  if (!jobs.length) return;
+  var d = new Date(), today = d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2);
+  var open = 0;
+  jobs.forEach(function (j) {
+    var c = j.getAttribute("data-closes");
+    if (c && c < today) j.hidden = true; else open++;
+  });
+  var empty = document.querySelector(".no-jobs");
+  if (empty && !open) empty.hidden = false;
+})();

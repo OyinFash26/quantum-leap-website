@@ -1,13 +1,21 @@
 """Builds the Quantum Leap website into site/.
 
 Header, footer and page shells live here once; each page only defines its own body.
-Run:  python build.py
-Outputs site/index.html, about.html, services.html, contact.html (full pages for any web host)
+Run:  python build.py            (vacancies come from jobs.json)
+      python build.py --drafts   (also shows unpublished jobs, for previewing only; don't push this build)
+Outputs site/index.html, about.html, services.html, careers.html, contact.html (full pages for any web host)
 and _preview-home.html next to this script (the home page body, used only for the Claude preview; not part of the website).
 """
+import html
+import json
+import sys
+from datetime import date
 from pathlib import Path
+from urllib.parse import quote
 
-OUT = Path(__file__).parent / "site"
+ROOT = Path(__file__).parent
+OUT = ROOT / "site"
+SHOW_DRAFTS = "--drafts" in sys.argv
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
@@ -58,7 +66,8 @@ LOGO = ('<svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><def
         '<circle cx="20" cy="30" r="3" fill="url(#ring{n})"/></svg>')
 
 NAV = [("index.html", "Home", "home"), ("about.html", "About us", "about"),
-       ("services.html", "Services", "services"), ("contact.html", "Contact", "contact")]
+       ("services.html", "Services", "services"), ("careers.html", "Careers", "careers"),
+       ("contact.html", "Contact", "contact")]
 
 
 def header(active):
@@ -84,7 +93,7 @@ FOOTER = f'''<footer class="site">
       <p>Trusted facility managers since 2012. Supporting your critical infrastructure needs.</p>
       <div class="social"><a href="{IG}" target="_blank" rel="noopener" aria-label="Instagram">{icon("ig", 18)}</a><a href="{FB}" target="_blank" rel="noopener" aria-label="Facebook">{icon("fb", 18)}</a></div>
     </div>
-    <div><h3>Company</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About us</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h3>Company</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About us</a></li><li><a href="services.html">Services</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
     <div><h3>Services</h3><ul><li><a href="services.html#facility">Facility management</a></li><li><a href="services.html#janitorial">Janitorial services</a></li><li><a href="services.html#post-construction">Post-construction cleaning</a></li><li><a href="services.html#real-estate">Real estate services</a></li><li><a href="services.html#audit">Free facility audit</a></li></ul></div>
     <div><h3>Get in touch</h3><ul><li>{ADDRESS}</li><li>Phone and WhatsApp: {PHONE}</li><li>{EMAIL}</li></ul></div>
   </div>
@@ -356,10 +365,122 @@ CONTACT = f'''<main>
 </div></section>
 </main>'''
 
+# ---------------------------------------------------------------- careers (from jobs.json)
+
+def esc(s):
+    return html.escape(str(s or ""), quote=True)
+
+
+def apply_link(job, form_url):
+    if form_url:
+        sep = "&" if "?" in form_url else "?"
+        return f"{form_url}{sep}job={quote(job['title'])}", ' target="_blank" rel="noopener"'
+    subject = quote(f"Application: {job['title']}")
+    body = quote(f"Hello Quantum Leap,\n\nI would like to apply for the {job['title']} role. "
+                 "My CV is attached.\n\nName:\nPhone:\nLocation:\n")
+    return f"mailto:{EMAIL}?subject={subject}&body={body}", ""
+
+
+def job_card(job, form_url, draft=False):
+    closing = job.get("closing") or ""
+    meta = [job.get("type"), job.get("location"), job.get("salary")]
+    chips = "".join(f"<span>{esc(m)}</span>" for m in meta if m)
+    if closing:
+        d = date.fromisoformat(closing)
+        chips += f'<span>Apply by {d.day} {d.strftime("%B %Y")}</span>'
+    resp = "".join(f"<li>{esc(r)}</li>" for r in job.get("responsibilities", []))
+    reqs = "".join(f"<li>{esc(r)}</li>" for r in job.get("requirements", []))
+    href, target = apply_link(job, form_url)
+    via = "Opens the application form" if form_url else f"Opens an email to {EMAIL}. Attach your CV before sending."
+    flag = '<span class="draft-flag">Draft: not shown on the live site</span>' if draft else ""
+    return f'''<article class="job" data-closes="{esc(closing)}">
+  <details>
+    <summary>
+      <div class="job-head"><h3>{esc(job["title"])}</h3>{flag}<div class="chips">{chips}</div><p>{esc(job.get("summary"))}</p></div>
+      <span class="job-toggle" aria-hidden="true"></span>
+    </summary>
+    <div class="job-body">
+      <div class="job-cols">
+        <div><h4>What you'll do</h4><ul class="ticks">{resp}</ul></div>
+        <div><h4>What we're looking for</h4><ul class="ticks">{reqs}</ul></div>
+      </div>
+      <div class="job-apply"><a class="btn btn-primary" href="{esc(href)}"{target}>Apply for this role</a><span class="muted">{esc(via)}</span></div>
+    </div>
+  </details>
+</article>'''
+
+
+def careers_page(show_drafts=False):
+    data = json.loads((ROOT / "jobs.json").read_text(encoding="utf-8"))
+    form_url = data.get("apply_form_url", "").strip()
+    today = date.today().isoformat()
+    cards = []
+    for job in data.get("jobs", []):
+        if job.get("closing") and job["closing"] < today:
+            continue
+        if job.get("published"):
+            cards.append(job_card(job, form_url))
+        elif show_drafts:
+            cards.append(job_card(job, form_url, draft=True))
+    general_subject = quote("General application")
+    empty = f'''<div class="no-jobs"{" hidden" if cards else ""}>
+    <h3>No open positions right now</h3>
+    <p>We're not hiring for a specific role at the moment, but we're always glad to hear from good people. Send us your CV and we'll keep it on file.</p>
+  </div>'''
+    return f'''<main>
+<section class="page-hero"><div class="wrap">
+  <p class="crumbs"><a href="index.html">Home</a> / Careers</p>
+  <p class="eyebrow">Careers</p>
+  <h1>Build your career with Quantum Leap</h1>
+  <p class="lede">We look after homes, estates, offices and commercial properties across Lagos. If you take pride in good work, we'd like to hear from you.</p>
+</div></section>
+
+<section class="block" id="openings" style="scroll-margin-top:90px"><div class="wrap">
+  <div class="sec-head">
+    <div><p class="eyebrow">Open positions</p><h2>Current vacancies</h2></div>
+    <p>Click a role to see the full details. Applications close at the end of the date shown.</p>
+  </div>
+  <div class="jobs">
+  {"".join(cards)}
+  {empty}
+  </div>
+</div></section>
+
+<section class="block alt"><div class="wrap">
+  <div class="sec-head">
+    <div><p class="eyebrow">How to apply</p><h2>What happens after you apply</h2></div>
+    <p>We read every application. If your experience matches the role, we'll contact you by phone or email.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><h3>Send your application</h3><p>Click "Apply for this role" and include your CV with your name, phone number and where you live in Lagos.</p></div>
+    <div class="step"><h3>We review it</h3><p>Our team checks your experience against what the role needs.</p></div>
+    <div class="step"><h3>Interview</h3><p>Shortlisted applicants are invited to an interview at our office in Ikota or by phone.</p></div>
+    <div class="step"><h3>Offer</h3><p>Successful applicants receive an offer and start with an introduction to our sites and team.</p></div>
+  </div>
+</div></section>
+
+<section class="block"><div class="wrap split">
+  <div class="copy">
+    <p class="eyebrow">Don't see the right role?</p>
+    <h2>Send us your CV anyway</h2>
+    <p>We regularly need cleaners, supervisors, technicians and facility officers. Email your CV with the subject "General application" and tell us the kind of work you're looking for.</p>
+    <div class="ctas" style="margin-top:6px"><a class="btn btn-primary" href="mailto:{EMAIL}?subject={general_subject}">Email your CV</a></div>
+    <p class="muted" style="font-size:.9rem">Or send it to <b>{EMAIL}</b></p>
+  </div>
+  <div class="media"><img src="img/janitorial.jpg" alt="Cleaning crew in red overalls at work in a modern apartment" loading="lazy"></div>
+</div></section>
+
+<section class="block tight"><div class="wrap">
+  <p class="privacy-note">We use the details and CV you send only to assess your application and contact you about roles at Quantum Leap. We don't share them with anyone else. To have your details deleted, email {EMAIL}.</p>
+</div></section>
+</main>'''
+
+
 PAGES = {
     "index.html": ("Quantum Leap Management Services", "home", HOME),
     "about.html": ("About Us | Quantum Leap Management Services", "about", ABOUT),
     "services.html": ("Services | Quantum Leap Management Services", "services", SERVICES),
+    "careers.html": ("Careers | Quantum Leap Management Services", "careers", careers_page(SHOW_DRAFTS)),
     "contact.html": ("Contact | Quantum Leap Management Services", "contact", CONTACT),
 }
 

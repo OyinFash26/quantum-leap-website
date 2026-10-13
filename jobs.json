@@ -1,0 +1,52 @@
+{
+  "_how_to_use": [
+    "Each job is one block in the 'jobs' list. To add a job, copy a block, change the details, and set 'published' to true.",
+    "'closing' is the last day to apply (YYYY-MM-DD). The job disappears from the site automatically after that day. Leave it empty for no closing date.",
+    "To remove a job early, set 'published' to false or delete its block.",
+    "'apply_form_url' is the link to the application form (for example a Tally or Google Form). Leave it empty and the Apply button opens an email to the company instead.",
+    "After editing, run: python build.py   then commit and push. The live site updates in about a minute."
+  ],
+  "apply_form_url": "",
+  "jobs": [
+    {
+      "published": false,
+      "title": "Janitorial Supervisor",
+      "type": "Full-time",
+      "location": "Lekki / Ajah, Lagos",
+      "salary": "",
+      "closing": "2026-11-30",
+      "summary": "EXAMPLE ONLY. Lead a team of cleaners across residential and commercial sites, making sure every job meets our standards.",
+      "responsibilities": [
+        "Plan daily cleaning schedules and assign staff to sites",
+        "Inspect completed work and fix issues on the spot",
+        "Keep track of cleaning supplies and equipment",
+        "Report to the facility manager on each site's progress"
+      ],
+      "requirements": [
+        "At least 2 years' experience in cleaning or janitorial work, including supervising others",
+        "Good communication in English; Yoruba is a plus",
+        "Able to travel between sites in Lekki and Ajah"
+      ]
+    },
+    {
+      "published": false,
+      "title": "Facility Maintenance Technician",
+      "type": "Full-time",
+      "location": "Lagos (various sites)",
+      "salary": "",
+      "closing": "",
+      "summary": "EXAMPLE ONLY. Carry out planned maintenance and repairs on the buildings we manage, from plumbing and electrical faults to generator checks.",
+      "responsibilities": [
+        "Carry out routine maintenance on plumbing, electrical and building fittings",
+        "Respond to repair requests from estates and offices",
+        "Run basic checks on generators and pumps",
+        "Keep a record of each job and the materials used"
+      ],
+      "requirements": [
+        "Trade certificate (e.g. NABTEB) or equivalent experience in electrical or plumbing work",
+        "At least 2 years' hands-on maintenance experience",
+        "Willing to be on call for emergencies on a rota"
+      ]
+    }
+  ]
+}
