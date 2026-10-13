@@ -1049,6 +1049,22 @@ for fname, (title, key, body, *rest) in PAGES.items():
     if key == "home":
         (Path(__file__).parent / "_preview-home.html").write_text(f"<title>{title}</title>\n{FONTS}\n{inner}", encoding="utf-8")
 
+# 404 page (served by Cloudflare for missing addresses; not in the sitemap, hidden from search)
+NOT_FOUND = f'''<main>
+<section class="page-hero"><div class="wrap">
+  <p class="eyebrow">Error 404</p>
+  <h1>We can't find that page</h1>
+  <p class="lede">The page may have moved, or the link may be mistyped. These links will get you back on track.</p>
+  <div class="ctas"><a class="btn btn-light" href="/">Go to the home page</a><a class="btn btn-outline-light" href="/services">See our services</a><a class="btn btn-outline-light" href="/contact">Contact us</a></div>
+</div></section>
+</main>'''
+(OUT / "404.html").write_text(
+    f'<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
+    f'<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
+    f'<title>Page not found | Quantum Leap Management Services</title>\n<meta name="robots" content="noindex">\n'
+    f'<base href="/">\n{FONTS}\n</head>\n<body>\n{header("")}\n{NOT_FOUND}\n{FOOTER}\n</body>\n</html>\n',
+    encoding="utf-8")
+
 # Sitemap and robots.txt so search engines find every page (clean URLs, as Vercel serves them)
 urls = "".join(
     f"  <url><loc>{page_url(f)}</loc><lastmod>{date.today().isoformat()}</lastmod></url>\n"

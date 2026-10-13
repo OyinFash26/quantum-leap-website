@@ -42,25 +42,5 @@ Two settings at the bottom of `build.py`:
 
 ## Hosting
 
-Deployed on Vercel. `vercel.json` tells Vercel to serve the `site/` folder with no build step.
-
-## Photos
-
-Most photos in `site/img/` come from [Pexels](https://www.pexels.com) and are used under the
-[Pexels License](https://www.pexels.com/license/) (free for commercial use, no attribution required):
-
-| File | Pexels photo |
-| --- | --- |
-| hero.jpg | Company profile (QLMS Profile 2026) |
-| facility.jpg | https://www.pexels.com/photo/34557960/ |
-| janitorial.jpg | Company brochure (QL Brochure 2026) |
-| post-construction.jpg | https://www.pexels.com/photo/6197122/ |
-| real-estate.jpg | https://www.pexels.com/photo/8470845/ |
-| team.jpg | https://www.pexels.com/photo/30688593/ |
-| moving-in.jpg | https://www.pexels.com/photo/4971211/ |
-| keys.jpg | https://www.pexels.com/photo/7937959/ |
-| about-house.jpg | https://www.pexels.com/photo/38040969/ |
-| engineer.jpg | https://www.pexels.com/photo/33915172/ |
-| bricks-court.jpg | Company brochure (QL Brochure 2026), photo of Bricks Court |
-| shore-court.jpg | Company brochure (QL Brochure 2026), photo of Shore Court (cropped) |
-| double-crown-plaza.jpg | Company brochure (QL Brochure 2026), photo of Double Crown Plaza |
+Hosted on Cloudflare (Workers static assets), connected to this GitHub repository: every push to `main` redeploys.
+`wrangler.jsonc` tells Cloudflare to serve only the `site/` folder. (`vercel.json` is kept for the old Vercel address.)
