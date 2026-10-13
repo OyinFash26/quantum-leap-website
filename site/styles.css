@@ -315,3 +315,9 @@ footer.site .bottom .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justi
 .no-jobs p { color: var(--muted); max-width: 60ch; }
 .privacy-note { font-size: .88rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 20px; max-width: 80ch; }
 @media (max-width: 700px) { .job-cols { grid-template-columns: 1fr; } .job summary { padding: 20px; } .job-body { padding: 0 20px 22px; } }
+
+/* Logo: sits on a small white disc wherever the background is dark, so the navy top of the ring stays visible */
+.logo-mark { width: 40px; height: 40px; flex: none; border-radius: 50%; padding: 2px; background: var(--logo-disc, transparent); }
+footer.site .logo-mark { background: #ffffff; padding: 3px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --logo-disc: #ffffff; } }
+:root[data-theme="dark"] { --logo-disc: #ffffff; }

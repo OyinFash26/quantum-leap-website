@@ -21,7 +21,9 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
          '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800'
          '&family=Figtree:ital,wght@0,400;0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">\n'
-         '<link rel="stylesheet" href="styles.css">')
+         '<link rel="stylesheet" href="styles.css">\n'
+         '<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">\n'
+         '<link rel="apple-touch-icon" href="img/apple-touch-icon.png">')
 
 PHONE = "0802 303 2178"
 PHONE_INTL = "+2348023032178"
@@ -59,11 +61,7 @@ def icon(name, size=22):
             f'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{paths[name]}</svg>')
 
 
-LOGO = ('<svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="ring{n}" x1="0" y1="0" x2="1" y2="1">'
-        '<stop offset="0" stop-color="#1aa3b5"/><stop offset="1" stop-color="#4d5ff0"/></linearGradient></defs>'
-        '<circle cx="20" cy="20" r="16.5" fill="none" stroke="url(#ring{n})" stroke-width="4"/>'
-        '<path d="M20 9v17" stroke="url(#ring{n})" stroke-width="3.2" stroke-linecap="round"/>'
-        '<circle cx="20" cy="30" r="3" fill="url(#ring{n})"/></svg>')
+LOGO = '<img class="logo-mark" src="img/logo.png" width="40" height="40" alt="">'
 
 NAV = [("index.html", "Home", "home"), ("about.html", "About us", "about"),
        ("services.html", "Services", "services"), ("careers.html", "Careers", "careers"),
@@ -79,7 +77,7 @@ def header(active):
   <span class="socials-mini"><a href="{IG}" target="_blank" rel="noopener">Instagram</a><a href="{FB}" target="_blank" rel="noopener">Facebook</a></span>
 </div></div>
 <header class="site"><div class="wrap">
-  <a class="brand" href="index.html" aria-label="Quantum Leap Management Services, home">{LOGO.format(n=1)}<span><b>Quantum Leap</b><small>Management Services Ltd</small></span></a>
+  <a class="brand" href="index.html" aria-label="Quantum Leap Management Services, home">{LOGO}<span><b>Quantum Leap</b><small>Management Services Ltd</small></span></a>
   <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mainnav">{icon("menu")}</button>
   <nav class="main" id="mainnav" aria-label="Main">{links}<a class="btn btn-primary" href="contact.html#audit">Book a free audit</a></nav>
   <a class="btn btn-primary cta" href="contact.html#audit">Book a free audit</a>
@@ -89,7 +87,7 @@ def header(active):
 FOOTER = f'''<footer class="site">
   <div class="wrap cols">
     <div class="about-f">
-      <a class="brand" href="index.html">{LOGO.format(n=2)}<span><b>Quantum Leap</b><small>Management Services Ltd</small></span></a>
+      <a class="brand" href="index.html">{LOGO}<span><b>Quantum Leap</b><small>Management Services Ltd</small></span></a>
       <p>Trusted facility managers since 2012. Supporting your critical infrastructure needs.</p>
       <div class="social"><a href="{IG}" target="_blank" rel="noopener" aria-label="Instagram">{icon("ig", 18)}</a><a href="{FB}" target="_blank" rel="noopener" aria-label="Facebook">{icon("fb", 18)}</a></div>
     </div>
