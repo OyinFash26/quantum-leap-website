@@ -32,14 +32,14 @@ Deployed on Vercel. `vercel.json` tells Vercel to serve the `site/` folder with 
 
 ## Photos
 
-The photos in `site/img/` come from [Pexels](https://www.pexels.com) and are used under the
+Most photos in `site/img/` come from [Pexels](https://www.pexels.com) and are used under the
 [Pexels License](https://www.pexels.com/license/) (free for commercial use, no attribution required):
 
 | File | Pexels photo |
 | --- | --- |
 | hero.jpg | https://www.pexels.com/photo/8488034/ |
 | facility.jpg | https://www.pexels.com/photo/34557960/ |
-| janitorial.jpg | https://www.pexels.com/photo/6196684/ |
+| janitorial.jpg | Company brochure (QL Brochure 2026) |
 | post-construction.jpg | https://www.pexels.com/photo/6197122/ |
 | real-estate.jpg | https://www.pexels.com/photo/8470845/ |
 | team.jpg | https://www.pexels.com/photo/30688593/ |
@@ -47,3 +47,4 @@ The photos in `site/img/` come from [Pexels](https://www.pexels.com) and are use
 | keys.jpg | https://www.pexels.com/photo/7937959/ |
 | about-house.jpg | https://www.pexels.com/photo/38040969/ |
 | engineer.jpg | https://www.pexels.com/photo/33915172/ |
+| double-crown-plaza.jpg | Company brochure (QL Brochure 2026), photo of Double Crown Plaza |

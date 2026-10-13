@@ -30,10 +30,22 @@ PHONE_INTL = "+2348023032178"
 WHATSAPP = "0802 303 2178"
 WA_LINK = "https://wa.me/2348023032178"
 EMAIL = "Quantumleapm@yahoo.com"
-ADDRESS = "Suite 26, Mobolaji Shopping Plaza, Ikota Bridge, Ikota, Lagos"
+ADDRESS = "Suite 23, Double Crown Plaza, Ogombo Road, off Lekki-Epe Expressway, Ajah, Lagos"
 IG = "https://www.instagram.com/quantum.leap.management/"
 FB = "https://www.facebook.com/quantumleapmgtservices/"
-MAP = "https://www.google.com/maps/search/?api=1&query=Mobolaji+Shopping+Plaza+Ikota+Lagos"
+MAP = "https://www.google.com/maps/search/?api=1&query=Double+Crown+Plaza+Ogombo+Road+Ajah+Lagos"
+
+# Properties from the company profile ("Our Experience")
+PROPERTIES = [
+    ("Bricks Court", "Orchid Road, Eti-Osa, Lagos"),
+    ("Garwood Court", "Lekki Conservation Centre Road, off Lekki-Epe Expressway, Lagos"),
+    ("Shore Court", "Lekki Phase 1, Lagos"),
+    ("Double Crown Plaza", "Ogombo Road, Abraham Adesanya, Eti-Osa, Lagos"),
+]
+
+
+def properties_list():
+    return "".join(f'<li><b>{name}</b><span>{where}</span></li>' for name, where in PROPERTIES)
 
 
 def icon(name, size=22):
@@ -95,7 +107,7 @@ FOOTER = f'''<footer class="site">
     <div><h3>Services</h3><ul><li><a href="services.html#facility">Facility management</a></li><li><a href="services.html#janitorial">Janitorial services</a></li><li><a href="services.html#post-construction">Post-construction cleaning</a></li><li><a href="services.html#real-estate">Real estate services</a></li><li><a href="services.html#audit">Free facility audit</a></li></ul></div>
     <div><h3>Get in touch</h3><ul><li>{ADDRESS}</li><li>Phone and WhatsApp: {PHONE}</li><li>{EMAIL}</li></ul></div>
   </div>
-  <div class="bottom"><div class="wrap"><span>© <span id="year">2026</span> Quantum Leap Management Services Ltd. All rights reserved.</span><span>Ikota, Lagos, Nigeria</span></div></div>
+  <div class="bottom"><div class="wrap"><span>© <span id="year">2026</span> Quantum Leap Management Services Ltd. All rights reserved.</span><span>Ajah, Lagos, Nigeria</span></div></div>
 </footer>
 <script src="site.js"></script>'''
 
@@ -105,6 +117,27 @@ def cta_band():
   <div><h2>Ready to give your property the care it deserves?</h2><p>Book a free facility audit, or send us a message and we'll get back to you.</p></div>
   <div class="ctas"><a class="btn btn-light" href="contact.html#audit">Book a free audit</a><a class="btn btn-outline-light" href="{WA_LINK}" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
 </div></section>'''
+
+
+# Six reasons from the company profile ("Why Choose Us")
+WHY_US = f'''<div class="why six">
+    <div class="reason"><span class="ic">{icon("bolt")}</span><h3>Operational efficiency</h3><p>Our service plans are designed to make your property run more efficiently.</p></div>
+    <div class="reason"><span class="ic">{icon("process")}</span><h3>Tailored solutions</h3><p>Every client gets a service plan built around their property's needs.</p></div>
+    <div class="reason"><span class="ic">{icon("people")}</span><h3>Experienced team</h3><p>Skilled professionals committed to quality service.</p></div>
+    <div class="reason"><span class="ic">{icon("phone")}</span><h3>Prompt response</h3><p>Fast response to maintenance requests and emergencies.</p></div>
+    <div class="reason"><span class="ic">{icon("shield")}</span><h3>Quality assurance</h3><p>Routine inspections and facility audits keep standards consistently high.</p></div>
+    <div class="reason"><span class="ic">{icon("chat")}</span><h3>Transparent communication</h3><p>Regular reports and clear, honest communication with every client.</p></div>
+  </div>'''
+
+# Six steps from the company profile ("Our Process")
+PROCESS = '''<div class="steps six">
+    <div class="step"><h3>Facility inspection and needs assessment</h3><p>We visit your property to understand how it runs and what it needs.</p></div>
+    <div class="step"><h3>Facility audit report</h3><p>You receive a written report of what we found and what needs attention.</p></div>
+    <div class="step"><h3>Customised service proposal</h3><p>We propose a service plan and scope designed for your property.</p></div>
+    <div class="step"><h3>Service implementation</h3><p>Our team and trusted vendors start work as agreed.</p></div>
+    <div class="step"><h3>Routine monitoring and reporting</h3><p>Regular inspections and reports keep you informed.</p></div>
+    <div class="step"><h3>Continuous improvement and support</h3><p>We review performance and adjust the plan as your needs change.</p></div>
+  </div>'''
 
 
 # ---------------------------------------------------------------- pages
@@ -130,10 +163,10 @@ HOME = f'''<main>
     <p>From routine maintenance to a deep clean after construction, one team takes care of it all. Choose a single service or combine them.</p>
   </div>
   <div class="svc-grid">
-    <a class="svc-card" href="services.html#facility"><img src="img/facility.jpg" alt="Residential high-rise in Lagos" loading="lazy"><div class="body"><h3>Facility management</h3><p>Planned and reactive maintenance that keeps your building working.</p><span class="more arrow">Learn more </span></div></a>
-    <a class="svc-card" href="services.html#janitorial"><img src="img/janitorial.jpg" alt="Cleaning crew in red overalls at work in a modern apartment" loading="lazy"><div class="body"><h3>Janitorial services</h3><p>Reliable daily, weekly or one-off cleaning by supervised crews.</p><span class="more arrow">Learn more </span></div></a>
-    <a class="svc-card" href="services.html#post-construction"><img src="img/post-construction.jpg" alt="Cleaner in overalls washing the windows of a newly finished home" loading="lazy"><div class="body"><h3>Post-construction cleaning</h3><p>Dust, debris and stains cleared so your property is ready to use.</p><span class="more arrow">Learn more </span></div></a>
-    <a class="svc-card" href="services.html#real-estate"><img src="img/real-estate.jpg" alt="Real estate agent holding house keys and a SOLD sign" loading="lazy"><div class="body"><h3>Real estate services</h3><p>Property management and guidance for owners and buyers.</p><span class="more arrow">Learn more </span></div></a>
+    <a class="svc-card" href="services.html#facility"><img src="img/facility.jpg" alt="Residential high-rise in Lagos" loading="lazy"><div class="body"><h3>Facility management</h3><p>Keeping buildings running efficiently, safely and cost-effectively over the long run.</p><span class="more arrow">Learn more </span></div></a>
+    <a class="svc-card" href="services.html#janitorial"><img src="img/janitorial.jpg" alt="Cleaning crew mopping, wiping and washing windows in a modern kitchen" loading="lazy"><div class="body"><h3>Janitorial services</h3><p>Clean, hygienic and presentable spaces for daily use, with light and deep cleaning plans.</p><span class="more arrow">Learn more </span></div></a>
+    <a class="svc-card" href="services.html#post-construction"><img src="img/post-construction.jpg" alt="Cleaner in overalls washing the windows of a newly finished home" loading="lazy"><div class="body"><h3>Post-construction cleaning</h3><p>Preparing newly built or renovated properties for handover, occupation or sale.</p><span class="more arrow">Learn more </span></div></a>
+    <a class="svc-card" href="services.html#real-estate"><img src="img/real-estate.jpg" alt="Real estate agent holding house keys and a SOLD sign" loading="lazy"><div class="body"><h3>Real estate services</h3><p>Property sourcing, leasing and basic property management for owners and clients.</p><span class="more arrow">Learn more </span></div></a>
   </div>
 </div></section>
 
@@ -142,22 +175,29 @@ HOME = f'''<main>
   <div class="copy">
     <p class="eyebrow">About Quantum Leap</p>
     <h2>Helping clients manage, maintain, improve and transform their properties</h2>
-    <p>We are an integrated facility management, real estate and property solutions company. We work across residential, commercial and mixed-use developments in Lagos, and we have been doing it since 2012.</p>
-    <ul class="ticks"><li>A team of professional facility managers</li><li>One point of contact for every service</li><li>Quality service and care for every property</li></ul>
+    <p>We are an integrated facility management, real estate and property solutions company. We protect property value, improve how buildings run, and make them better places for the people who use them.</p>
+    <p>Our strength is offering several related services under one trusted brand, so you work with a single partner instead of multiple vendors.</p>
+    <ul class="ticks"><li>One partner instead of multiple vendors</li><li>A service plan tailored to your property</li><li>Regular reports and clear communication</li></ul>
     <a class="btn btn-primary arrow" href="about.html">More about us </a>
   </div>
 </div></section>
 
 <section class="block"><div class="wrap">
   <div class="sec-head">
-    <div><p class="eyebrow">Why choose us</p><h2>Four reasons to trust us with your property</h2></div>
-    <p>Trust and facility management go hand in hand. This is what you get when you work with Quantum Leap.</p>
+    <div><p class="eyebrow">Why choose us</p><h2>Why property owners trust Quantum Leap</h2></div>
+    <p>Trust and facility management go hand in hand. This is what you get when you work with us.</p>
   </div>
-  <div class="why">
-    <div class="reason"><span class="ic">{icon("medal")}</span><h3>Expertise and experience</h3><p>Professional facility managers serving Lagos properties since 2012.</p></div>
-    <div class="reason"><span class="ic">{icon("wrench")}</span><h3>Maintenance and repairs</h3><p>We fix what's broken and keep up the routine work that stops it breaking again.</p></div>
-    <div class="reason"><span class="ic">{icon("bolt")}</span><h3>Fast and reliable support</h3><p>Call or WhatsApp us and a real person picks it up and follows it through.</p></div>
-    <div class="reason"><span class="ic">{icon("shield")}</span><h3>Smart maintenance and care</h3><p>Planned upkeep that protects your property's value over time.</p></div>
+  {WHY_US}
+</div></section>
+
+<section class="block alt"><div class="wrap split">
+  <div class="media"><img src="img/double-crown-plaza.jpg" alt="Double Crown Plaza on Ogombo Road, Ajah" loading="lazy"></div>
+  <div class="copy">
+    <p class="eyebrow">Our experience</p>
+    <h2>Properties we've managed</h2>
+    <p>We have worked with estates and commercial properties across Lekki, Ajah and Eti-Osa, including:</p>
+    <ul class="props">{properties_list()}</ul>
+    <a class="btn btn-primary arrow" href="about.html#experience">About our work </a>
   </div>
 </div></section>
 
@@ -190,31 +230,35 @@ ABOUT = f'''<main>
   <p class="crumbs"><a href="index.html">Home</a> / About us</p>
   <p class="eyebrow">About us</p>
   <h1>Trusted facility managers since 2012</h1>
-  <p class="lede">We are a team of management service professionals who support the critical infrastructure needs of property owners across Lagos.</p>
+  <p class="lede">An integrated facility management, real estate and property solutions company helping businesses, developers, institutions and property owners keep their properties running smoothly.</p>
 </div></section>
 
 <section class="block"><div class="wrap split">
   <div class="copy">
     <p class="eyebrow">Who we are</p>
-    <h2>An integrated facility management, real estate and property solutions company</h2>
-    <p>Quantum Leap Management Services Ltd helps clients manage, maintain, improve and transform their properties across residential, commercial and mixed-use developments.</p>
-    <p>We offer property management solutions as a one-stop shop for all your property needs. We provide quality services and care that help every property reach its full potential.</p>
+    <h2>One trusted partner for the care of your property</h2>
+    <p>Quantum Leap Management Services Ltd provides a full range of facility management services that protect property value, improve operational efficiency, and make buildings better for the people who use them, through proactive maintenance and excellent service.</p>
+    <p>Our strength is offering several related services under one trusted brand, so clients work with a single partner instead of multiple vendors. From light building cleaning to strategic property management, we leave your environment clean, safe and productive.</p>
+    <p>Whether it's a residential estate, commercial building, school, healthcare facility or corporate office, we tailor our solutions to each client's needs.</p>
     <div class="facts">
       <div class="fact"><b>2012</b><span>Year we started</span></div>
       <div class="fact"><b>4</b><span>Core services under one roof</span></div>
-      <div class="fact"><b>Lagos</b><span>Office in Ikota</span></div>
+      <div class="fact"><b>Ajah</b><span>Office on Ogombo Road, Lagos</span></div>
     </div>
   </div>
   <div class="media"><img src="img/about-house.jpg" alt="Newly built house in Abuja" loading="lazy"></div>
 </div></section>
 
-<section class="block alt"><div class="wrap split flip">
-  <div class="copy">
-    <p class="eyebrow">Our goal</p>
-    <p class="quote-block">"Our goal is to support your critical infrastructure needs."</p>
-    <p>A property loses value quietly. Blocked drains, hidden maintenance issues, poor cleaning and safety risks all add up. We find and fix these early, so owners and tenants can get on with their lives and work.</p>
+<section class="block alt"><div class="wrap">
+  <div class="sec-head">
+    <div><p class="eyebrow">What drives us</p><h2>Our vision, mission and philosophy</h2></div>
+    <p>Supporting your critical infrastructure needs.</p>
   </div>
-  <div class="media"><img src="img/engineer.jpg" alt="Engineer in a hard hat at an electrical substation in Nigeria" loading="lazy"></div>
+  <div class="why three">
+    <div class="reason"><span class="ic">{icon("medal")}</span><h3>Our vision</h3><p>To redefine property care by making proactive, high-quality asset preservation the standard for every property owner.</p></div>
+    <div class="reason"><span class="ic">{icon("process")}</span><h3>Our mission</h3><p>To deliver seamless facility management that safeguards your assets, drives operational efficiency, and frees you to focus on what you do best.</p></div>
+    <div class="reason"><span class="ic">{icon("shield")}</span><h3>Our philosophy</h3><p>Exceptional service equals property value. We don't just maintain your building; we actively safeguard your investment so its market value is retained and enhanced over time.</p></div>
+  </div>
 </div></section>
 
 <section class="block band"><div class="wrap">
@@ -230,12 +274,37 @@ ABOUT = f'''<main>
   </div>
 </div></section>
 
+<section class="block"><div class="wrap split flip">
+  <div class="media"><img src="img/engineer.jpg" alt="Engineer in a hard hat at an electrical substation in Nigeria" loading="lazy"></div>
+  <div class="copy">
+    <p class="eyebrow">Our service delivery team</p>
+    <h2>A flexible team that scales with your property</h2>
+    <p>We combine management oversight, facility operations, technical support and trained service staff, and deploy the right people for the size, complexity and needs of each property.</p>
+    <dl class="team-units">
+      <div><dt>Management and client relations</dt><dd>Strategic oversight, client communication and performance management.</dd></div>
+      <div><dt>Facility operations</dt><dd>Day-to-day facility supervision, inspections and service coordination.</dd></div>
+      <div><dt>Technical support</dt><dd>Building systems, preventive maintenance and corrective maintenance coordination.</dd></div>
+      <div><dt>Soft services team</dt><dd>Cleaning, landscaping, waste management and other property services.</dd></div>
+    </dl>
+  </div>
+</div></section>
+
+<section class="block alt" id="experience" style="scroll-margin-top:90px"><div class="wrap split">
+  <div class="copy">
+    <p class="eyebrow">Our experience</p>
+    <h2>Properties we've managed</h2>
+    <p>Over the past few years we have worked with these estates and properties:</p>
+    <ul class="props">{properties_list()}</ul>
+  </div>
+  <div class="media"><img src="img/double-crown-plaza.jpg" alt="Double Crown Plaza on Ogombo Road, Ajah" loading="lazy"></div>
+</div></section>
+
 <section class="block"><div class="wrap">
   <div class="sec-head">
-    <div><p class="eyebrow">Who we work with</p><h2>Properties we look after</h2></div>
-    <p>Whatever the size of your property, a well-run facility starts with the right partner.</p>
+    <div><p class="eyebrow">Who we work with</p><h2>Clients and properties we serve</h2></div>
+    <p>We work with businesses, developers, institutions and property owners.</p>
   </div>
-  <div class="chips"><span>Residential estates</span><span>Private homes</span><span>Offices</span><span>Plazas and shopping centres</span><span>Schools</span><span>Hospitals</span><span>Commercial property</span><span>Mixed-use developments</span></div>
+  <div class="chips"><span>Residential estates</span><span>Commercial buildings</span><span>Corporate offices</span><span>Plazas and shopping centres</span><span>Educational institutions</span><span>Healthcare facilities</span><span>Mixed-use developments</span><span>Private homes</span></div>
 </div></section>
 </main>
 {cta_band()}'''
@@ -254,18 +323,18 @@ SERVICES = f'''<main>
     <div class="copy">
       <span class="num">Service 01</span>
       <h2>Facility management</h2>
-      <p>We keep your building, its systems and its common areas working properly, with planned maintenance and fast repairs when something goes wrong.</p>
-      <ul class="ticks"><li>Routine maintenance and repairs</li><li>Plumbing and drainage</li><li>Electrical and generator checks</li><li>Safety inspections</li><li>Supervision of vendors and artisans</li></ul>
+      <p>We make sure buildings and facilities run efficiently, safely and cost-effectively over the long run. Our facility management covers everything involved in keeping a property well maintained, on terms agreed with the property owner.</p>
+      <ul class="ticks"><li>Day-to-day facility operations coordination</li><li>Preventive and corrective maintenance oversight</li><li>Asset management and maintenance scheduling</li><li>Vendor and artisan coordination (cleaners, security, electrical, plumbing, HVAC and more)</li><li>Routine facility inspections and reporting</li><li>Energy management</li><li>Security and access control</li><li>A clean and well-kept environment</li><li>Client reporting and performance tracking</li></ul>
       <a class="btn btn-primary" href="contact.html#facility">Request facility management</a>
     </div>
   </article>
   <article class="svc-detail" id="janitorial">
-    <div class="media"><img src="img/janitorial.jpg" alt="Cleaning crew in red overalls at work in a modern apartment" loading="lazy"></div>
+    <div class="media"><img src="img/janitorial.jpg" alt="Cleaning crew mopping, wiping and washing windows in a modern kitchen" loading="lazy"></div>
     <div class="copy">
       <span class="num">Service 02</span>
       <h2>Janitorial services</h2>
-      <p>Supervised cleaning crews on a daily, weekly or one-off schedule, for homes, offices and shared spaces.</p>
-      <ul class="ticks"><li>Office and common-area cleaning</li><li>Washrooms and kitchens</li><li>Floor and window care</li><li>Waste disposal</li><li>Fumigation</li></ul>
+      <p>We keep spaces clean, hygienic and presentable for daily use. We offer both light and deep cleaning plans, depending on what your property needs.</p>
+      <ul class="ticks"><li>Daily, weekly and periodic cleaning</li><li>Office cleaning</li><li>Residential and estate cleaning</li><li>Restroom and common-area sanitation</li><li>Waste management and disposal coordination</li><li>Cleaning staff supervision and quality checks</li></ul>
       <a class="btn btn-primary" href="contact.html#janitorial">Request janitorial services</a>
     </div>
   </article>
@@ -274,8 +343,8 @@ SERVICES = f'''<main>
     <div class="copy">
       <span class="num">Service 03</span>
       <h2>Post-construction cleaning</h2>
-      <p>Building or renovation leaves dust, paint, cement and debris everywhere. We clear it all, so you can move in or hand over the property.</p>
-      <ul class="ticks"><li>Debris and rubble removal</li><li>Paint and cement stain removal</li><li>Tiles, glass and fittings cleaned</li><li>A move-in ready finish</li></ul>
+      <p>We prepare newly built or renovated properties for handover, occupation or sale, clearing the dust and debris that construction leaves behind.</p>
+      <ul class="ticks"><li>Removal of construction debris and dust</li><li>Deep cleaning of floors, walls, fittings and surfaces</li><li>Window, glass and façade cleaning</li><li>Final detailing and finishing cleans</li><li>Handover-ready cleaning for inspections and client use</li></ul>
       <a class="btn btn-primary" href="contact.html#post-construction">Request post-construction cleaning</a>
     </div>
   </article>
@@ -284,11 +353,19 @@ SERVICES = f'''<main>
     <div class="copy">
       <span class="num">Service 04</span>
       <h2>Real estate services</h2>
-      <p>Property management and practical advice for landlords, owners and first-time buyers in Lagos.</p>
-      <ul class="ticks"><li>Property management</li><li>Tenant and estate liaison</li><li>Pre-purchase inspections</li><li>Guidance for home buyers</li></ul>
+      <p>We support property owners and clients with property sourcing, leasing and basic property management.</p>
+      <ul class="ticks"><li>Property sourcing and listing</li><li>Property inspections and evaluations</li><li>Leasing and tenant coordination</li><li>Support for sales and lettings</li><li>Property handover and documentation support</li></ul>
       <a class="btn btn-primary" href="contact.html#real-estate">Request real estate services</a>
     </div>
   </article>
+</div></section>
+
+<section class="block alt" id="process" style="scroll-margin-top:90px"><div class="wrap">
+  <div class="sec-head">
+    <div><p class="eyebrow">How we work</p><h2>Our process</h2></div>
+    <p>Every engagement follows the same six steps, from the first inspection to ongoing support.</p>
+  </div>
+  {PROCESS}
 </div></section>
 
 <section class="block tight" id="audit" style="scroll-margin-top:90px"><div class="wrap">
@@ -454,7 +531,7 @@ def careers_page(show_drafts=False):
   <div class="steps">
     <div class="step"><h3>Send your application</h3><p>Click "Apply for this role" and send your CV along with your details.</p></div>
     <div class="step"><h3>We review it</h3><p>Our team checks your experience against what the role needs.</p></div>
-    <div class="step"><h3>Interview</h3><p>Shortlisted applicants are invited to an interview at our office in Ikota or by phone.</p></div>
+    <div class="step"><h3>Interview</h3><p>Shortlisted applicants are invited to an interview at our office in Ajah or by phone.</p></div>
     <div class="step"><h3>Offer</h3><p>Successful applicants receive an offer and start with an introduction to our sites and team.</p></div>
   </div>
 </div></section>
