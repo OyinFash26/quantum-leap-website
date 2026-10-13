@@ -37,10 +37,10 @@ Applications: set `"apply_form_url"` to an application form link (for example a 
 Every page includes a canonical URL, link-preview tags (`site/img/og-image.jpg`) and structured business data for Google.
 Two settings at the bottom of `build.py`:
 
-- `SITE_URL`: change it if the site moves to its own domain, then rebuild (this also updates `sitemap.xml`).
+- `SITE_URL`: currently the Cloudflare address; change it if the site moves to its own domain, then rebuild (this also updates `sitemap.xml`).
 - `GOOGLE_SITE_VERIFICATION`: paste the code from Google Search Console's "HTML tag" option, then rebuild and push.
 
 ## Hosting
 
 Hosted on Cloudflare (Workers static assets), connected to this GitHub repository: every push to `main` redeploys.
-`wrangler.jsonc` tells Cloudflare to serve only the `site/` folder. (`vercel.json` is kept for the old Vercel address.)
+`wrangler.jsonc` tells Cloudflare to serve only the `site/` folder. `vercel.json` permanently redirects the old Vercel address (quantum-leap-website.vercel.app) to the Cloudflare site.

@@ -1,5 +1,11 @@
 {
   "buildCommand": "",
   "outputDirectory": "site",
-  "cleanUrls": true
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://quantum-leap-website.oyinfasanu.workers.dev/$1",
+      "permanent": true
+    }
+  ]
 }
