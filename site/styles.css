@@ -119,7 +119,7 @@ nav.main a[aria-current="page"] { color: var(--royal); background: var(--tint); 
 .hero .lede { margin-top: 16px; max-width: 34rem; font-size: 1.08rem; color: var(--muted); }
 .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 .hero-media { position: relative; min-width: 0; }
-.hero-media .main-img { width: 100%; aspect-ratio: 4 / 4.2; object-fit: cover; border-radius: 28px; box-shadow: var(--shadow); }
+.hero-media .main-img { width: 100%; height: auto; aspect-ratio: 4 / 4.2; object-fit: cover; border-radius: 28px; box-shadow: var(--shadow); }
 .hero-media .badge { position: absolute; left: -22px; bottom: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 16px 18px; box-shadow: var(--shadow); display: grid; gap: 4px; max-width: 250px; }
 .hero-media .badge b { font: 700 1rem/1.2 var(--display); }
 .hero-media .badge span { font-size: .86rem; color: var(--muted); }
